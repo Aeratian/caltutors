@@ -27,7 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+%*_zjo0=z0z%f2i2i1ec+4apqupea2sad4e7)u6i+a9je^l#('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ['*', 'localhost', 'http://0.0.0.0:5000/', '127.0.0.1']
+# ALLOWED_HOSTS = ['*', 'localhost', 'http://0.0.0.0:5000/', '127.0.0.1']
+ALLOWED_HOSTS = ['www.caltutors.org', 'www.cupertutors.org', '0.0.0.0']
 DEBUG = False
 # DEBUG = True
 
@@ -132,6 +133,39 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'logfile': {
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': 'var/log/error.log'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['logfile'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}
 
 
 # db_from_env = dj_database_url.config(conn_max_age=500)
