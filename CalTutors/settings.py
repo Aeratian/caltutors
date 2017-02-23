@@ -27,10 +27,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+%*_zjo0=z0z%f2i2i1ec+4apqupea2sad4e7)u6i+a9je^l#('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# ALLOWED_HOSTS = ['*', 'localhost', 'http://0.0.0.0:5000/', '127.0.0.1']
 ALLOWED_HOSTS = ['www.caltutors.org', 'www.cupertutors.org', '0.0.0.0']
 DEBUG = False
-# DEBUG = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True # [1]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -59,6 +63,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'djangosecure.middleware.SecurityMiddleware',
     # 'student.gate.sessionmiddleware.GatedContent',
 ]
 
