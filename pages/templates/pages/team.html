@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="author" content="Michael Wan">
+
+		<title>Team</title>
+		{% load static %}
+		<link rel = "icon" href = "{% static 'img/icon/blackbox.png' %}">
+		{% load static %}
+		<meta property="og:image" content="{% static 'img/icon/icon.png' %}"/>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'theme/vendor/bootstrap/css/bootstrap.css' %}"/>
+		{% load static %}
+		<link href="{% static 'stylesheets/odometer.css' %}" rel="stylesheet">
+
+		<!-- Theme CSS -->
+		{% load static %}
+		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'stylesheets/test.css' %}"/>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'stylesheets/tooltip.css' %}"/>
+
+		<style>
+			.img-circle {
+				border-radius: 50%;
+			}
+			.team-member a p {
+				color: #555;
+			}
+			.team-member {
+				display: block;
+				transition: all .2s ease-in-out;
+			}
+			.team-member:hover {
+				transform: scale(1.1);
+			}
+			#blurb {
+				/*display: block;*/
+			}
+			.siteContent {
+				padding: 10px 0;
+				text-align: center;
+			}
+			.border {
+				border-radius:4px;
+				border: 2px solid #4684ED;
+				background: #4684ED;
+				padding: 4px 8px 4px 8px;
+				display: inline;
+				text-align: center;
+				color: white;
+			}
+			.border a {
+				font-weight: 500;
+				color: white;
+			}
+			.team-member a h4 {
+				color: #222222 !important;
+			}
+			.team-member a {
+				text-decoration: none !important;
+			}
+			.noselect {
+				-webkit-user-select: none;  /* Chrome all / Safari all */
+				-moz-user-select: none;     /* Firefox all */
+				-ms-user-select: none;      /* IE 10+ */
+				user-select: none;          /* Likely future */      
+			}
+			.dropdown-menu li a:hover,
+			.dropdown-menu li a:focus {
+				color: #111111 !important;
+			}
+		</style>
+	</head>
+
+	<body id="page-top" class="index">
+		<!-- Navigation -->
+		<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top" style = "background-color: #222222 !important">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header page-scroll">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top" style = "color: #FFFFFF !important">Team</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li><a class = "page-scroll" href="/">Home</a></li>
+						<li><a class = "page-scroll" href="/team/">Team</a></li>
+						<li><a class = "page-scroll" href="/classes/">Classes</a></li>
+						<li><a class = "page-scroll" href="/photo/">Photo Gallery</a></li>
+						<li><a class = "page-scroll" href="/contact/">Contact</a></li>
+						{% ifequal login "0" %}
+							<li>
+								<a class = "page-scroll" href="/student/"><div class='border'>Sign in</div></a>
+							</li>
+						{% else %}
+							<li>
+								<a class="page-scroll dropdown-toggle" id = "toggle" style = "cursor: pointer"> <!-- btn btn-primary -->
+									<div class = 'border'>
+										<i class="fa fa-user fa-lg" aria-hidden="true"></i>
+									</div>
+								</a>
+								<div class="dropdown">
+									<ul class="noselect dropdown-menu" id = "usermenu" style = "display: none">
+										<li><a href="/student/">Student Portal</a></li>
+										<li><a href="/student/account">Account Details</a></li>
+										<!-- <br> -->
+										<li style = "margin: 10px 5px 2px 5px">
+											<form id = "logout_element" action="{% url 'student:logout' %}" method="POST" style="display: inline;">
+												{% csrf_token %}
+												<div class = 'border' style = "display: block; margin: 0px 5px -15px 5px">
+													<a href = "#" onclick = "document.getElementById('logout_element').submit();">Logout</a>
+												</div>
+											</form>
+										</li>
+									</ul>
+								</div>
+							</li>
+						{% endifequal %}
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<!-- Header -->
+		<header>
+			<div class="container">
+			</div>
+		</header>
+
+		<!-- Title Section -->
+		<section class = "noselect" id="title" style = "padding-bottom: 7.5vh !important">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2>Our Team</h2>
+						<div id = "blurb">Click on the images to read more about them!</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Cofounder Section -->
+		<section id="cofounder" style = "padding: 0 0 3vh 0 !important">
+			<div class="noselect container" style = "text-align: center">
+				<h3>Founders</h3>
+				<div class="row" style = "align: center">
+					<div class="col-lg-3"></div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=neil">
+								{% load static %}
+								<img src = "{% static 'img/team/neil.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Neil Palleti</h4>
+								<p>Founder & President</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=michael">
+								{% load static %}
+								<img src = "{% static 'img/team/michael.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Michael Wan</h4>
+								<p>Founder & VP</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=victor">
+								{% load static %}
+								<img src = "{% static 'img/team/victor.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Victor Yin</h4>
+								<p>Founder</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Director Section -->
+		<section id="director" style = "padding: 0 0 3vh 0 !important">
+			<div class="noselect container" style = "text-align: center">
+				<h3>Directors</h3>
+				<div class="row" style = "align: center">
+					<div class = "col-lg-4"></div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=aaron_lopes">
+								{% load static %}
+								<img src = "{% static 'img/team/aaron_lopes.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Aaron Lopes</h4>
+								<p>Director of Marketing</p>
+							</a>
+						</div>						
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=raj">
+								{% load static %}
+								<img src = "{% static 'img/team/raj.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Raj Palleti</h4>
+								<p>Director of Operations</p>
+							</a>
+						</div>
+					</div>
+					<div class = "col-lg-4"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Tutor Section -->
+		<section id="tutor" style = "padding: 0 0 3vh 0 !important">
+			<div class="noselect container" style = "text-align: center">
+				<h3>Tutors</h3>
+				<div class = "row">
+					<div class="col-lg-3"></div>
+					<div class = "col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=andrew">
+								{% load static %}
+								<img src = "{% static 'img/team/andrew.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Andrew Yeh</h4>
+								<p>Math Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=steven">
+								{% load static %}
+								<img src = "{% static 'img/team/steven.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Steven Liu</h4>
+								<p>Chem Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=michelle">
+								{% load static %}
+								<img src = "{% static 'img/team/michelle.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Michelle Kwan</h4>
+								<p>Math & CS Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3"></div>
+				</div>
+				<div class = "row">
+					<div class="col-lg-3"></div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=bryan">
+								{% load static %}
+								<img src = "{% static 'img/team/bryan.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Bryan Chen</h4>
+								<p>Math & CS Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=anirudh_balasubramaniam">
+								{% load static %}
+								<img src = "{% static 'img/team/anirudh_balasubramaniam.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Anirudh Balasubramaniam</h4>
+								<p>Math Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=aditya_garg">
+								{% load static %}
+								<img src = "{% static 'img/team/aditya_garg.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Aditya Garg</h4>
+								<p>Math & CS Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3"></div>
+				</div>
+				<div class = "row">
+					<div class="col-lg-4"></div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=amithab_arumugam">
+								{% load static %}
+								<img src = "{% static 'img/team/amithab_arumugam.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Amithab Arumugam</h4>
+								<p>Math Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class = "team-member">
+							<a href = "/team_member?name=sriman_manyam">
+								{% load static %}
+								<img src = "{% static 'img/team/sriman_manyam.png' %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<h4>Sriman Manyam</h4>
+								<p>Math & Chem Tutor</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4"></div>
+				</div>
+			</div>
+		</section>
+
+		<main container class="noselect siteContent">
+			Want to be part of the team? Click <a href = "/student/tutor/">here</a> to sign up as a tutor.
+		</main>
+		<hr>
+		<footer container class="siteFooter">
+			<div class = "noselect container">
+				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
+			</div>
+		</footer>
+		<!-- jQuery -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
+		<!-- Bootstrap Core JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+		<!-- Plugin JavaScript -->
+		{% load static %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<!-- Contact Form JavaScript -->
+		{% load static %}
+		<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
+		{% load static %}		
+		<script src="{% static 'theme/js/contact_me.js' %}"></script>
+		<!-- Theme JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/js/agency.min.js' %}"></script>
+		<!-- Odometer JavaScript -->
+		{% load static %}
+		<script src="{% static 'js/odometer.js' %}"></script>
+		<!-- Waypoints -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+
+		<script>
+			$('body').click(function(){
+				$('#usermenu').hide();
+				$(document).on('click', function(e) {
+					if ($(e.target).closest('#toggle').length ) {
+						if ($("#usermenu").css('display') === 'none') {
+							$("#usermenu").show();
+						}
+						else {
+							$("#usermenu").hide();	
+						}
+					}
+					else if (!$(e.target).closest('#usermenu').length) {
+						$('#usermenu').hide();
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

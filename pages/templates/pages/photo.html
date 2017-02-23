@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="author" content="Michael Wan">
+
+		<title>Photo</title>
+		{% load static %}
+		<link rel = "icon" href = "{% static 'img/icon/blackbox.png' %}">
+		{% load static %}
+		<meta property="og:image" content="{% static 'img/icon/icon.png' %}"/>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'theme/vendor/bootstrap/css/bootstrap.css' %}"/>
+		{% load static %}
+		<link href="{% static 'stylesheets/odometer.css' %}" rel="stylesheet">
+
+		<!-- Theme CSS -->
+		{% load static %}
+		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+		<style>
+			.img-circle {
+				border-radius: 50%;
+			}
+			.team-member {
+				transition: all .2s ease-in-out;
+			}
+			.team-member:hover {
+				transform: scale(1.2);
+			}
+			.siteContent {
+				padding: 10px 0;
+				text-align: center;
+			}
+			.slideshow {display:none;}
+			/*img { transition: opacity .5s ease-in; }*/
+			/*img + img {	opacity: 0;}*/
+			.border {
+				border-radius:4px;
+				border: 2px solid #4684ED;
+				background: #4684ED;
+				padding: 4px 8px 4px 8px;
+				display: inline;
+				text-align: center;
+				color: white;
+			}
+			.border a {
+				font-weight: 500;
+				color: white;
+			}
+			.noselect {
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none;   /* Chrome/Safari/Opera */
+				-khtml-user-select: none;	/* Konqueror */
+				-moz-user-select: none;	  /* Firefox */
+				-ms-user-select: none;	   /* Internet Explorer/Edge */
+				user-select: none;		   /* Non-prefixed version, currently not supported by any browser */
+			}
+			.dropdown-menu li a:hover,
+			.dropdown-menu li a:focus {
+				color: #111111 !important;
+			}
+		</style>
+	</head>
+
+	<body id="page-top" class="index">
+		<!-- Navigation -->
+		<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top" style = "background-color: #222222 !important">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header page-scroll">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top" style = "color: #FFFFFF !important">Photo Gallery</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li><a class = "page-scroll" href="/">Home</a></li>
+						<li><a class = "page-scroll" href="/team/">Team</a></li>
+						<li><a class = "page-scroll" href="/classes/">Classes</a></li>
+						<li><a class = "page-scroll" href="/photo/">Photo Gallery</a></li>
+						<li><a class = "page-scroll" href="/contact/">Contact</a></li>
+						{% ifequal login "0" %}
+							<li>
+								<a class = "page-scroll" href="/student/"><div class='border'>Sign in</div></a>
+							</li>
+						{% else %}
+							<li>
+								<a class="page-scroll dropdown-toggle" id = "toggle" style = "cursor: pointer"> <!-- btn btn-primary -->
+									<div class = 'border'>
+										<i class="fa fa-user fa-lg" aria-hidden="true"></i>
+									</div>
+								</a>
+								<div class="dropdown">
+									<ul class="noselect dropdown-menu" id = "usermenu" style = "display: none">
+										<li><a href="/student/">Student Portal</a></li>
+										<li><a href="/student/account">Account Details</a></li>
+										<!-- <br> -->
+										<li style = "margin: 10px 5px 2px 5px">
+											<form id = "logout_element" action="{% url 'student:logout' %}" method="POST" style="display: inline;">
+												{% csrf_token %}
+												<div class = 'border' style = "display: block; margin: 0px 5px -15px 5px">
+													<a href = "#" onclick = "document.getElementById('logout_element').submit();">Logout</a>
+												</div>
+											</form>
+										</li>
+									</ul>
+								</div>
+							</li>
+						{% endifequal %}
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<!-- Header -->
+		<header>
+			<div class="container">
+			</div>
+		</header>
+
+		<!-- Title Section -->
+		<section class = "noselect" id="title" style = "padding-bottom: 7.5vh !important">
+			<div class="container" style = "text-align: center">
+				<h2>Photos</h2>
+			</div>
+		</section>
+
+		<!-- Math Section -->
+		<section id="photo" style = "padding: 0 0 6vh 0 !important">
+			<div class="container" style = "align: center; text-align: center">
+				<div class="row" style = "align: center; text-align: center">
+					<div class = "col-lg-2"></div>
+					<div class = "col-lg-8">
+						<div class="slideshow_div" style="align: center; max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/a834ac512754032090021b36ac4832d9.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/c36e1695b1cf865ab18152ebf30d52e0.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/e91dece822affc392dda9eda0263f9d6.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/36fed13b3c7eee723444de4c41d392c9.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/da8a9aae1066d15c93e3f619fb72dd24.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/897063fb889c1ef61a3ea62f28e86228.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/733e472fe8283d861ce14b6613e2caa1.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/df0888b07b1f406b33204763feb79462.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/f18042e1ab41f51c329fc09dd8107ad1.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/2b0f17385b0c13061cf25bba812f72ef.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/25d3acce4dc5b0303a61adbdf7b6a04f.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/6a10b7fc1dedbaf36064aab69f112faa.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/61bb609ed525fde1c9665b86162d4700.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/de4b0b295af3c1e95a4457ec85a3d9e4.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/3521253ebd9af8fae2beb008298b3dd0.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/8014b5bec13babd5317f35f8c911115e.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/ee9813729798c51b58d1dc02ea10961f.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/2793ea6043f4822fae24680bd0e8907d.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/93f137c56d4b192057b3c1da58755f4e.jpg" style = "max-width: 80vh">
+							<img class = "slideshow" src = "https://i.gyazo.com/e52f077c89cad2e34f465abf8a00f41b.jpg" style = "max-width: 80vh">
+						</div>
+					</div>
+					<div class = "col-lg-2"></div>
+				</div>
+			</div>
+		</section>
+		<hr>
+		<footer container class="siteFooter">
+			<div class = "container">
+				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
+			</div>
+		</footer>
+
+		<!-- jQuery -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
+		<!-- Bootstrap Core JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+		<!-- Plugin JavaScript -->
+		{% load static %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<!-- Contact Form JavaScript -->
+		{% load static %}
+		<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
+		{% load static %}		
+		<script src="{% static 'theme/js/contact_me.js' %}"></script>
+		<!-- Theme JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/js/agency.min.js' %}"></script>
+		<!-- Odometer JavaScript -->
+		{% load static %}
+		<script src="{% static 'js/odometer.js' %}"></script>
+		<!-- jQuery Cycle JavaScript -->
+		{% load static %}
+		<script src="{% static 'js/jquery.cycle.js' %}"></script>
+		<!-- Waypoints -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+		<script>
+			$('body').click(function(){
+				$('#usermenu').hide();
+				$(document).on('click', function(e) {
+					if ($(e.target).closest('#toggle').length ) {
+						if ($("#usermenu").css('display') === 'none') {
+							$("#usermenu").show();
+						}
+						else {
+							$("#usermenu").hide();	
+						}
+					}
+					else if (!$(e.target).closest('#usermenu').length) {
+						$('#usermenu').hide();
+					}
+				});
+			});
+		</script>
+
+		<script>
+			$(document).ready(function () {
+				$('.slideshow_div').cycle({
+					fx: 'fade', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+					timeout: 3500,
+					after: function () {
+						$('.caption').html(this.alt);
+					},
+					random: 1 // <-- add this
+				});
+			});
+		</script>
+	</body>
+</html>

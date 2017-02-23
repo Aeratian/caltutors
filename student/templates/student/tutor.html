@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="author" content="Michael Wan">
+
+		<title>Tutor Registration</title>
+		{% load static %}
+		<link rel = "icon" href = "{% static 'img/icon/blackbox.png' %}">
+		{% load static %}
+		<meta property="og:image" content="{% static 'img/icon/icon.png' %}"/>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'theme/vendor/bootstrap/css/bootstrap.css' %}"/>
+		{% load static %}
+		<link href="{% static 'stylesheets/odometer.css' %}" rel="stylesheet">
+		{% load static %}
+		<link href="{% static 'stylesheets/input.css' %}" rel="stylesheet">
+
+		<!-- Theme CSS -->
+		{% load static %}
+		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+		<style>
+			.border {
+				border-radius:4px;
+				border: 2px solid #4684ED;
+				background: #4684ED;
+				padding: 4px 8px 4px 8px;
+				display: inline;
+				text-align: center;
+				color: white;
+			}
+			.border a {
+				font-weight: 500;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body id="page-top" class="index">
+		<section id = "main">
+			<div class = "container">
+				<h2 style = "text-align: center">Tutor Registration</h2>
+				<form action="{% url 'student:registerTutor' %}" method="POST">
+					<div style = "border: 1px solid #e0e0e0; border-radius: 3px; padding: 24px 1em; margin-bottom: 24px;">
+						{%csrf_token%}
+						<legend>Information</legend>
+							<label for="name">Name:</label><input type="text" name="name" placeholder="John Doe" required/>
+							<label for="age">Age:</label><input type="number" name="age" min = "1" max="100" placeholder="15" required/>
+							<label for="school">School:</label><input type="text" name="school" required/>
+							<label for="email">Email:</label><input type="email" name="email" placeholder="john_doe@example.com" required/>
+							<br><br>
+							<label for="name">Position:</label><br>
+							<input type="checkbox" name="tutor_position" value="Math"> <label for="Math">Math Tutor</label><br>
+							<input type="checkbox" name="tutor_position" value="CS"> <label for="CS">Computer Science Tutor</label><br>
+							<input type="checkbox" name="tutor_position" value="Chemistry"> <label for="Chem">Chemistry Tutor</label><br>
+							<br>
+							<label for="Qualifications and experiences">List your qualifications and experiences:</label><textarea name="qual_and_exp" rows="3" required></textarea>
+							<label for="Why do you want to be a tutor?">Why do you want to be a tutor?</label><textarea name="purpose" rows="1" required></textarea>
+							<label for="Self Description">Self Description (to put on website):</label><textarea name="self_description" rows="3" required></textarea>
+							<label for="referral">Who referred you to us? We'd like to send them a thank you.</label><input type="text" name="referral"/>
+							<label for="Comments/questions">Additional comments/questions:</label><textarea name="comments_and_questions" rows="1"></textarea>
+						<br><br>
+						<input type="submit" value="Submit">
+						<input type="hidden" name="_next" value="thanks_tutor.html" />
+					</div>
+				</form>
+			</div>
+		</section>
+		<hr>
+		<footer container class="siteFooter">
+			<div class = "container">
+				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
+			</div>
+		</footer>
+	</body>
+</html>

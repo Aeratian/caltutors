@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="author" content="Michael Wan">
+
+		<title>Password Reset</title>
+		{% load static %}
+		<link rel = "icon" href = "{% static 'img/icon/blackbox.png' %}">
+		{% load static %}
+		<meta property="og:image" content="{% static 'img/icon/icon.png' %}"/>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'theme/vendor/bootstrap/css/bootstrap.css' %}"/>
+		{% load static %}
+		<link href="{% static 'stylesheets/odometer.css' %}" rel="stylesheet">
+		{% load static %}
+		<link href="{% static 'stylesheets/input.css' %}" rel="stylesheet">
+
+		<!-- Theme CSS -->
+		{% load static %}
+		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+		<style>
+			.isa_warning {
+				color: #9F6000;
+				background-color: #FEEFB3;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+
+	<body id="page-top" class="index">
+		<!-- Navigation -->
+		<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top" style = "background-color: #222222 !important">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header page-scroll">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top" style = "color: #FFFFFF !important">Password Reset</a>
+				</div>
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<section id="siteContent">
+			<div class = "container">
+				<div class = "row">
+					<div class = "col-lg-3"></div>
+					<div class = "col-lg-6" style = "font-size: 20px">
+						{% ifnotequal message "-" %}
+							<div class="isa_warning">
+								<i class="fa fa-warning"></i>
+								{{message}}
+							</div><br>
+						{% endifnotequal %}
+						<b>
+						<form action="{% url 'student:change_password' %}" method="post">
+							{% csrf_token %}
+							Hi {{ name }},<br><br>
+							Enter your new password: <input type="password" name="password" placeholder="Password"><br><br>
+							Confirm your new password: <input type="password" name="n_password" placeholder="Password"><br><br>
+							<input type="hidden" name = "url" value="loc" id = "loc">
+							<input type="submit" value="Submit"/>
+						</form>
+						</b>
+					</div>
+					<div class = "col-lg-3"></div>
+				</div>
+			</div>
+		</section>
+		<hr>
+		<footer container class="siteFooter">
+			<div class = "container">
+				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
+			</div>
+		</footer>
+		<!-- jQuery -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
+		<!-- Bootstrap Core JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+		<!-- Plugin JavaScript -->
+		{% load static %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<!-- Contact Form JavaScript -->
+		{% load static %}
+		<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
+		{% load static %}		
+		<script src="{% static 'theme/js/contact_me.js' %}"></script>
+		<!-- Theme JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/js/agency.min.js' %}"></script>
+		<!-- Odometer JavaScript -->
+		{% load static %}
+		<script src="{% static 'js/odometer.js' %}"></script>
+		<!-- Waypoints -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+		<script>
+			$('body').click(function(){
+				$('#usermenu').hide();
+				$(document).on('click', function(e) {
+					if ($(e.target).closest('#toggle').length ) {
+						if ($("#usermenu").css('display') === 'none') {
+							$("#usermenu").show();
+						}
+						else {
+							$("#usermenu").hide();	
+						}
+					}
+					else if (!$(e.target).closest('#usermenu').length) {
+						$('#usermenu').hide();
+					}
+				});
+			});
+		</script>
+		<script>
+			document.getElementById('loc').value = location.href;
+		</script>
+	</body>
+</html>

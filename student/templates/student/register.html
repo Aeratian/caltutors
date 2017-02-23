@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="author" content="Michael Wan">
+
+		<title>Create Account</title>
+		{% load static %}
+		<link rel = "icon" href = "{% static 'img/icon/blackbox.png' %}">
+		{% load static %}
+		<meta property="og:image" content="{% static 'img/icon/icon.png' %}"/>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'theme/vendor/bootstrap/css/bootstrap.css' %}"/>
+		{% load static %}
+		<link href="{% static 'stylesheets/odometer.css' %}" rel="stylesheet">
+		{% load static %}
+		<link href="{% static 'stylesheets/input.css' %}" rel="stylesheet">
+
+		<!-- Theme CSS -->
+		{% load static %}
+		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-77456822-1', 'auto');
+			ga('send', 'pageview');
+			ga('set', 'userId', {{USER_ID}}); // Set the user ID using signed-in user_id.
+		</script>
+
+		<style>
+			.isa_error {
+				color: #D8000C;
+				background-color: #FFBABA;
+				vertical-align: middle;
+			}
+			.isa_success {
+				color: #4F8A10;
+				background-color: #DFF2BF;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+
+	<body id="page-top" class="index">
+		<section id = "signin">
+			<div class = "container">
+				<h2 style = "text-align: center">Create Account</h2>
+				<br><br>
+				<br>
+				<div row>
+					<div class = "col-sm-3"></div>
+					<div class = "col-sm-6">
+						{% ifnotequal message "-" %}
+							<div class="isa_error">
+								&nbsp;
+								<i class="fa fa-warning"></i>
+								{{message}}
+							</div><br>
+						{% endifnotequal %}
+						<div style = "border: 1px solid #e0e0e0; border-radius: 3px; padding: 24px 1em; margin-bottom: 24px;">
+							<legend><b>Create Account</b></legend>
+							<form action="{% url 'student:create' %}" method="post" style = "line-height: 1.75">
+								{% csrf_token %}
+								First name: <input type="text" name="firstname" placeholder="First name"><br>
+								Last name: <input type="text" name="lastname" placeholder="Last name"><br>
+								Email:  <input type="email" name="email" placeholder="john_doe@example.com"><br>
+								School: <input type="text" name="school" placeholder="Kennedy Middle School"><br>
+								Username: <input type="text" name="username" placeholder="Username"><br>
+								Password: <input type="password" name="password" placeholder="Password"><br>
+								<br>
+								<input type="submit" value="Create" /><br>
+							</form>
+						</div>
+					</div>
+					<div class = "col-sm-3"></div>
+				</div>
+			</div>
+		</section>
+		<hr>
+		<footer container class="siteFooter">
+			<div class = "container">
+				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
+			</div>
+		</footer>
+	</body>
+</html>

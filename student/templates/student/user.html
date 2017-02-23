@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="author" content="Michael Wan">
+
+		<title>Student Portal</title>
+		{% load static %}
+		<link rel = "icon" href = "{% static 'img/icon/blackbox.png' %}">
+		{% load static %}
+		<meta property="og:image" content="{% static 'img/icon/icon.png' %}"/>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'theme/vendor/bootstrap/css/bootstrap.css' %}"/>
+		{% load static %}
+		<link href="{% static 'stylesheets/odometer.css' %}" rel="stylesheet">
+		{% load static %}
+		<link href="{% static 'stylesheets/input.css' %}" rel="stylesheet">
+
+		<!-- Theme CSS -->
+		{% load static %}
+		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+		<style>
+			.border {
+				border-radius:4px;
+				border: 2px solid #4684ED;
+				background: #4684ED;
+				padding: 4px 8px 4px 8px;
+				display: inline;
+				text-align: center;
+				color: white;
+			}
+			.border a {
+				font-weight: 500;
+				color: white;
+			}
+			.masthead {
+				{% load static %}
+				background-image: url("{% static 'img/bkg.jpg' %}");
+			}
+			.masthead .container {
+				color: #EEEEEE;
+			}
+			.masthead a {
+				color: #EEEEEE;
+			}
+			.masthead button {
+				color: #EEEEEE;
+			}
+			.noselect {
+				-webkit-user-select: none;  /* Chrome all / Safari all */
+				-moz-user-select: none;     /* Firefox all */
+				-ms-user-select: none;      /* IE 10+ */
+				user-select: none;          /* Likely future */      
+			}
+			.dropdown-menu li a:hover,
+			.dropdown-menu li a:focus {
+				color: #111111 !important;
+			}
+		</style>
+	</head>
+
+	<body id="page-top" class="index">
+		{% load student_extras %}
+		<!-- Navigation -->
+		<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top" style = "background-color: #222222 !important">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header page-scroll">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top" style = "color: #FFFFFF !important">Student Portal</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li><a class = "page-scroll" href="/">Home</a></li>
+						<li><a class = "page-scroll" href="/team/">Team</a></li>
+						<li><a class = "page-scroll" href="/classes/">Classes</a></li>
+						<li><a class = "page-scroll" href="/photo/">Photo Gallery</a></li>
+						<li><a class = "page-scroll" href="/contact/">Contact</a></li>
+						{% ifequal login "0" %}
+							<li>
+								<a class = "page-scroll" href="/student/"><div class='border'>Sign in</div></a>
+							</li>
+						{% else %}
+							<li>
+								<a class="page-scroll dropdown-toggle" id = "toggle" style = "cursor: pointer"> <!-- btn btn-primary -->
+									<div class = 'border'>
+										<i class="fa fa-user fa-lg" aria-hidden="true"></i>
+									</div>
+								</a>
+								<div class="dropdown">
+									<ul class="noselect dropdown-menu" id = "usermenu" style = "display: none">
+										<li><a href="/student/">Student Portal</a></li>
+										<li><a href="/student/account">Account Details</a></li>
+										<!-- <br> -->
+										<li style = "margin: 10px 5px 2px 5px">
+											<form id = "logout_element" action="{% url 'student:logout' %}" method="POST" style="display: inline;">
+												{% csrf_token %}
+												<div class = 'border' style = "display: block; margin: 0px 5px -15px 5px">
+													<a href = "#" onclick = "document.getElementById('logout_element').submit();">Logout</a>
+												</div>
+											</form>
+										</li>
+									</ul>
+								</div>
+							</li>
+						{% endifequal %}
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<!-- Header -->
+		<header>
+			<div class="container">
+			</div>
+		</header>
+
+		<section class="masthead" style = "vertical-align: center; margin-top: 10vh">
+			<div class = "noselect container">
+				<h2><span style = "color: #EEEEEE">Welcome, <i>{{ username }}</i></span></h2>
+				<br><br>
+				<b>{{ lastname }}, {{ firstname }}</b><br>
+				Classes:<br>
+				{% if display_classes|length != 0 %}
+					{% if display_classes|first != "" and display_classes|first != " " %}
+						<ul>
+						{% for i in display_classes %}
+							<li><a style = "text-decoration: underline" href= "/student/class/?course={{ i|replaceSpaceWithUnderScore|trim|lower }}">{{ i }}</a></li>
+						{% endfor %}
+						</ul>
+					{% else %}
+						<b>No Registered Classes</b><br><br>
+					{% endif %}
+				{% else %}
+					<b>No Registered Classes</b><br>
+				{% endif %}
+				
+				<form id = "view_class_schedule" action="{% url 'student:class_schedule' %}" method="POST" style="display: inline;">
+					{% csrf_token %}
+					<a href = "#" onclick = "document.getElementById('view_class_schedule').submit();">View Class Schedule</a>
+				</form>
+				<br><br>
+				<!-- <legend><b>Logout</b></legend> -->
+				<form action="{% url 'student:logout' %}" method="post">
+					{% csrf_token %}
+					<input type="submit" value="Logout" />
+				</form>
+			</div>
+		</section>
+
+		<section id = "main" style = "padding-top: 4vh !important; padding-bottom: 7.5vh !important">
+			<div class = "noselect container">
+				<div class = "row">
+					<div class = "col-lg-6">
+						<h5>Register Classes</h5>
+						<div style = "border: 1px solid #e0e0e0; border-radius: 3px; padding: 24px 1em; margin-bottom: 24px;">
+							<!-- <legend><b>Register Classes</b></legend> -->
+							<form action="{% url 'student:registerClass' %}" method="POST">
+								{% csrf_token %}
+								<p>
+									<label for="classes">Classes:</label><br>
+									<!-- NO COMMAS IN NAMES B/C IT'LL MESS UP MODELS -->
+									<input type="checkbox" name="classes" value="AMC 8 @ Calabazas Library every Friday from 4 - 5:30 PM" {% if "AMC 8 @ Calabazas Library every Friday from 4 - 5:30 PM" in classes %}checked{% endif %}>
+									<label for="AMC 8 @ Calabazas Library every Friday from 4 - 5:30 PM">AMC 8 @ Calabazas Library every Friday from 4 - 5:30 PM</label>
+									<br>
+									
+									<input type="checkbox" name="classes" value="AMC 8 Workshop @ West Valley Library every Saturday from 3 - 4:30 PM" {% if "AMC 8 Workshop @ West Valley Library every Saturday from 3 - 4:30 PM" in classes %}checked{% endif %}>
+									<label for="AMC 8 Workshop">AMC 8 Workshop @ West Valley Library every Saturday from 3 - 4:30 PM</label>
+									<br>
+									
+									<input type="checkbox" name="classes" value="AMC 10 @ Calabazas Library every Monday from 4:30 - 6 PM" {% if "AMC 10 @ Calabazas Library every Monday from 4:30 - 6 PM" in classes %}checked{% endif %}>
+									<label for="AMC 10 @ Calabazas Library every Monday from 4:30 - 6 PM">AMC 10 @ Calabazas Library every Monday from 4:30 - 6 PM</label>
+									<br>
+								</p>
+								<!-- <p>
+									<label for="message">Additional comments/questions:</label>
+									<textarea name="message" rows="6"></textarea>
+								</p> -->
+								<input type="submit" value="Submit">
+							</form>
+						</div>
+					</div>
+					<div class = "col-lg-2"></div>
+					<div class = "col-lg-4">
+						<h5>Reminders / Notifications</h5>
+						Make sure to bring <a href = "{% static 'forms/CalTutors_Photography_Permission_Form.pdf' %}">this form</a> on the first day of class!<br>
+					</div>
+				</div>
+			</div>
+		</section>
+		<hr>
+		<footer container class="noselect siteFooter">
+			<div class = "container">
+				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
+			</div>
+		</footer>
+		<!-- jQuery -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
+		<!-- Bootstrap Core JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+		<!-- Plugin JavaScript -->
+		{% load static %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<!-- Contact Form JavaScript -->
+		{% load static %}
+		<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
+		{% load static %}		
+		<script src="{% static 'theme/js/contact_me.js' %}"></script>
+		<!-- Theme JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/js/agency.min.js' %}"></script>
+		<!-- Odometer JavaScript -->
+		{% load static %}
+		<script src="{% static 'js/odometer.js' %}"></script>
+		<!-- Waypoints -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+		<script>
+			$('body').click(function(){
+				$('#usermenu').hide();
+				$(document).on('click', function(e) {
+					if ($(e.target).closest('#toggle').length ) {
+						if ($("#usermenu").css('display') === 'none') {
+							$("#usermenu").show();
+						}
+						else {
+							$("#usermenu").hide();	
+						}
+					}
+					else if (!$(e.target).closest('#usermenu').length) {
+						$('#usermenu').hide();
+					}
+				});
+			});
+		</script>
+	</body>
+	<br><br>
+</html>

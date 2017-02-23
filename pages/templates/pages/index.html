@@ -1,0 +1,349 @@
+<!DOCTYPE html>	
+<html lang = "en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="author" content="Michael Wan">
+
+		<title>CalTutors</title>
+		{% load static %}
+		<link rel = "icon" href = "{% static 'img/icon/blackbox.png' %}">
+		{% load static %}
+		<meta property="og:image" content="{% static 'img/icon/icon.png' %}"/>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'theme/vendor/bootstrap/css/bootstrap.css' %}"/>
+		{% load static %}
+		<link href="{% static 'stylesheets/odometer.css' %}" rel="stylesheet">
+
+		<!-- Theme CSS -->
+		{% load static %}
+		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+		<style>
+			.masthead {
+				{% load static %}
+				background-image: url("{% static 'img/front3.png' %}");
+			}
+			.kilo {
+				color: #d3d3d3;
+				/*color: #000000;*/
+			}
+			.border {
+				border-radius:4px;
+				border: 2px solid #4684ED;
+				background: #4684ED;
+				padding: 4px 8px 4px 8px;
+				display: inline;
+				text-align: center;
+				color: white;
+			}
+			.border a {
+				font-weight: 500;
+				color: white;
+			}
+
+			.btn {
+				border-style: none !important;
+			}
+
+			.dropdown-menu li a:hover,
+			.dropdown-menu li a:focus {
+				color: #111111 !important;
+			}
+			.noselect {
+				-webkit-user-select: none;  /* Chrome all / Safari all */
+				-moz-user-select: none;     /* Firefox all */
+				-ms-user-select: none;      /* IE 10+ */
+				user-select: none;          /* Likely future */      
+			}
+	</style>
+	</head>
+
+	<body id="page-top" class="index">
+		<!-- Navigation -->
+		<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header page-scroll">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top" style = "color: #FFFFFF !important">CalTutors</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li><a class = "page-scroll" href="/">Home</a></li>
+						<li><a class = "page-scroll" href="/team/">Team</a></li>
+						<li><a class = "page-scroll" href="/classes/">Classes</a></li>
+						<li><a class = "page-scroll" href="/photo/">Photo Gallery</a></li>
+						<li><a class = "page-scroll" href="/contact/">Contact</a></li>
+						{% ifequal login "0" %}
+							<li>
+								<a class = "page-scroll" href="/student/"><div class='border'>Sign in</div></a>
+							</li>
+						{% else %}
+							<li>
+								<a class="page-scroll dropdown-toggle" id = "toggle" style = "cursor: pointer"> <!-- btn btn-primary -->
+									<div class = 'border'>
+										<i class="fa fa-user fa-lg" aria-hidden="true"></i>
+									</div>
+								</a>
+								<div class="dropdown">
+									<ul class="noselect dropdown-menu" id = "usermenu" style = "display: none">
+										<li><a href="/student/">Student Portal</a></li>
+										<li><a href="/student/account">Account Details</a></li>
+										<!-- <br> -->
+										<li style = "margin: 10px 5px 2px 5px">
+											<form id = "logout_element" action="{% url 'student:logout' %}" method="POST" style="display: inline;">
+												{% csrf_token %}
+												<div class = 'border' style = "display: block; margin: 0px 5px -15px 5px">
+													<a href = "#" onclick = "document.getElementById('logout_element').submit();">Logout</a>
+												</div>
+											</form>
+										</li>
+									</ul>
+								</div>
+							</li>
+						{% endifequal %}
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<!-- Header -->
+		<header class = "noselect">
+			<div class="container">
+				<div class="intro-text">
+					<!-- <div class="intro-lead-in">!</div> -->
+					<div class="intro-heading">CalTutors</div>
+					<a href="#about" class="page-scroll btn btn-xl">Tell Me More</a>
+				</div>
+			</div>
+		</header>
+
+		<!-- About Section -->
+		<section id="about">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<!-- <h2 class="section-heading">About</h2> -->
+						<br>
+						<p style = "font-size: 160%"><b>CalTutors is a student-led organization that serves to educate students of all ages free of charge.  After noticing the dearth of educators that value education over profit, we have created the nonprofit organization, CalTutors, to educate children in various Olympiads and competitions. Because we have the necessary tools and knowledge, our students thrive under our guidance and achieve their academic goals, becoming the best students they can be.</b></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- Stats Section -->
+		<section id="stats" class = "bg-light-gray" style = "padding: 30px 0 30px 0 !important">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">Our Stats</h2>
+						<h3 class="section-subheading text-muted">In 2016, we have accumulated..</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3 text-center">
+						<h3>
+							<div id = "num_hours" class = "odometer">0</div>+ hours
+						</h3>
+					</div>
+					<div class="col-lg-3 text-center">
+						<h3>
+							<div id = "num_students" class = "odometer">0</div>+ students
+						</h3>
+					</div>
+					<div class="col-lg-3 text-center">
+						<h3>
+							<div id = "num_classes" class = "odometer">0</div>+ sessions
+						</h3>
+					</div>
+					<div class="col-lg-3 text-center">
+						<h3>
+							<div id = "num_libraries" class = "odometer">0</div> libraries
+						</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- News Section -->
+		<section id="News" style = "padding: 75px 0 75px 0 !important">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">News</h2>
+						<!-- <h3 class="section-subheading text-muted">CalTutors has been featured in various journals, newspapers, and other forms of media. You might have seen us in:</h3> -->
+						<h3 class="section-subheading text-muted">CalTutors has been featured in:</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3 text-center" style = "vertical-align: middle">
+						<!-- {% load static %} -->
+						<!-- <img src = "{% static 'img/news/bi.png' %}" style = "max-height: 120px"> -->
+					</div>
+					<div class="col-lg-3 text-center">
+						{% load static %}
+						<a href = "http://www.mercurynews.com/2016/10/06/local-teens-offer-free-tutoring-for-math-science-competitions/"><img src = "{% static 'img/news/mercury.png' %}" style = "max-height: 140px"></a>
+					</div>
+					<div class="col-lg-3 text-center">
+						{% load static %}
+						<a href = "https://i.gyazo.com/dd9fdd10194355410d059efe1d7c9ca2.jpg"><img src = "{% static 'img/news/worldjournal.png' %}" style = "max-height: 140px"></a>
+
+					</div>
+					<div class="col-lg-3 text-center">
+						<!-- {% load static %} -->
+						<!-- <img src = "{% static 'img/news/cnn.png' %}" style = "max-height: 120px"> -->
+					</div>
+				</div>
+				<div class="row text-center">
+				</div>
+			</div>
+		</section>
+
+		<!-- Learn More Section -->
+		<section id="learn_more" class = "bg-light-gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">Learn More</h2>
+						<h3 class="section-subheading text-muted">Click below to learn more about CalTutors:</h3>
+					</div>
+				</div>
+				<div class="row text-center">
+					<div class="col-md-3">
+						<a href = "/team/">
+							<span class="fa-stack fa-4x">
+								<i class="fa fa-circle fa-stack-2x text-primary"></i>
+								<i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+						<h4 class="service-heading">About Us</h4>
+						<p class="text-muted">Meet our diverse and well-experienced team of students:</p>
+						<a class = "button" href = "/team/">Learn More</a>
+					</div>
+					<div class="col-md-3">
+						<a href = "/classes/">
+							<span class="fa-stack fa-4x">
+								<i class="fa fa-circle fa-stack-2x text-primary"></i>
+								<i class="fa fa-book fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+						<h4 class="service-heading">Our Classes</h4>
+						<p class="text-muted">We offer a variety of math and programming olympiad training.</p>
+						<a class = "button" href = "/classes/">Learn More</a>
+					</div>
+					<div class="col-md-3">
+						<a href = "/student/">
+							<span class="fa-stack fa-4x">
+								<i class="fa fa-circle fa-stack-2x text-primary"></i>
+								<i class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+						<h4 class="service-heading">Register</h4>
+						<p class="text-muted">Interested in becoming part of CalTutors?</p>
+						<a class = "button" href = "/student/">Learn More</a>
+					</div>
+					<div class="col-md-3">
+						<a href = "/contact/">
+							<span class="fa-stack fa-4x">
+								<i class="fa fa-circle fa-stack-2x text-primary"></i>
+								<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+						<h4 class="service-heading">Contact</h4>
+						<p class="text-muted">Any questions or comments?</p>
+						<a class = "button" href = "/contact/">Let us know!</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- <section align = "center" style = "padding: 40px 0 10px 0 !important">
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+				">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+		</section> -->
+		<hr>
+		<footer container class="siteFooter">
+			<div class = "container">
+				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
+			</div>
+		</footer>
+
+		<!-- jQuery -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
+		<!-- Bootstrap Core JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+		<!-- Plugin JavaScript -->
+		{% load static %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<!-- Contact Form JavaScript -->
+		{% load static %}
+		<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
+		{% load static %}		
+		<script src="{% static 'theme/js/contact_me.js' %}"></script>
+		<!-- Theme JavaScript -->
+		{% load static %}		
+		<script src="{% static 'theme/js/agency.min.js' %}"></script>
+		<!-- Odometer JavaScript -->
+		{% load static %}
+		<script src="{% static 'js/odometer.js' %}"></script>
+		<!-- Waypoints -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+		<script>
+			$('body').click(function(){
+				$('#usermenu').hide();
+				$(document).on('click', function(e) {
+					if ($(e.target).closest('#toggle').length ) {
+						if ($("#usermenu").css('display') === 'none') {
+							$("#usermenu").show();
+						}
+						else {
+							$("#usermenu").hide();	
+						}
+					}
+					else if (!$(e.target).closest('#usermenu').length) {
+						$('#usermenu').hide();
+					}
+				});
+			});
+		</script>
+
+		<script>
+			$('#stats').waypoint(function() {
+				setTimeout(function() { num_hours.innerHTML = "1300"; }, 1000);
+				setTimeout(function() { num_students.innerHTML = "400"; }, 1000);
+				setTimeout(function() { num_classes.innerHTML = "300"; }, 1000);
+				setTimeout(function() { num_libraries.innerHTML = "4"; }, 1000);
+			},
+			{ offset: '100%' });
+		</script>
+	</body>
+</html>
