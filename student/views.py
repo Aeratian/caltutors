@@ -368,7 +368,7 @@ def create_view(request):
 																	 request.POST['email'],
 																	 request.POST['school']),
 		'noreply-caltutors@caltutors.org',
-		['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com', 'caltutorswebsite@gmail.com'],
+		['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com'],
 		fail_silently=False,
 	)
 	send_mail(
@@ -710,7 +710,7 @@ def registerTutor_view(request):
 																			email,
 																			tutor_pos)
 
-	plain_s += 'Qualifications and Experiences:\n%s\nPurpose of joining Cupertutors:\n%s\n' % (qe, purpose)
+	plain_s += 'Qualifications and Experiences:\n%s\nPurpose of joining CalTutors:\n%s\n' % (qe, purpose)
 	plain_s += 'Self Description:\n%s\nReferral:\n%s\n\nComments and Questions:\n%s\n' % (sd, referral, cq)
 
 
@@ -720,14 +720,14 @@ def registerTutor_view(request):
 																																	   email,
 																																	   tutor_pos)
 
-	html_s += '<b>Qualifications and Experiences</b>:<br>%s<br><br><b>Purpose of joining Cupertutors</b>:<br>%s<br><br>' % (qe, purpose)
+	html_s += '<b>Qualifications and Experiences</b>:<br>%s<br><br><b>Purpose of joining CalTutors</b>:<br>%s<br><br>' % (qe, purpose)
 	html_s += '<b>Self Description</b>:<br>%s<br><br><b>Referral</b>:<br>%s<br><br><b>Comments and Questions</b>:<br>%s<br><br>' % (sd, referral, cq)
 
 	mail = EmailMultiAlternatives(
 		subject = "New CalTutors Tutor",
 		body = plain_s,
 		from_email = "noreply-caltutors@caltutors.org",
-		to = ['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com', 'caltutorswebsite@gmail.com'],
+		to = ['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com'],
 	)
 	mail.attach_alternative(html_s, "text/html")
 
