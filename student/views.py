@@ -367,14 +367,14 @@ def create_view(request):
 																	 request.POST['firstname'],
 																	 request.POST['email'],
 																	 request.POST['school']),
-		'noreply-cupertutors@cupertutors.org',
-		['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com', 'cupertutorswebsite@gmail.com'],
+		'noreply-caltutors@caltutors.org',
+		['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com', 'caltutorswebsite@gmail.com'],
 		fail_silently=False,
 	)
 	send_mail(
 			'PW for %s %s (%s)' % (request.POST['firstname'], request.POST['lastname'], username),
 			'PW: %s' % (password),
-			'noreply-cupertutors@cupertutors.org',
+			'noreply-caltutors@caltutors.org',
 			['michaelruihaowan@gmail.com'],
 			fail_silently=False,
 		)
@@ -726,8 +726,8 @@ def registerTutor_view(request):
 	mail = EmailMultiAlternatives(
 		subject = "New CalTutors Tutor",
 		body = plain_s,
-		from_email = "noreply-cupertutors@cupertutors.org",
-		to = ['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com', 'cupertutorswebsite@gmail.com'],
+		from_email = "noreply-caltutors@caltutors.org",
+		to = ['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com', 'caltutorswebsite@gmail.com'],
 	)
 	mail.attach_alternative(html_s, "text/html")
 
@@ -746,7 +746,7 @@ def send_reset_link_view(request):
 	data = {}
 	email = request.POST['reset_email']
 	ctime = time.strftime("%Y-%m-%d-%H-%M")
-	url = ('http://www.cupertutors.org/student/reset/?v=' + base64.b64encode(ctime) + ".")
+	url = ('http://www.caltutors.org/student/reset/?v=' + base64.b64encode(ctime) + ".")
 	r = id_generator(127)
 	tmp = 0
 	for i in range(0, r.__len__()):
@@ -782,7 +782,7 @@ def send_reset_link_view(request):
 	mail = EmailMultiAlternatives(
 		subject = "Reset CalTutors Account Password",
 		body = plain_s,
-		from_email = "noreply-cupertutors@cupertutors.org",
+		from_email = "noreply-caltutors@caltutors.org",
 		to = [request.POST['reset_email']],
 	)
 	mail.attach_alternative(html_s, "text/html")
