@@ -30,8 +30,8 @@ SECRET_KEY = '+%*_zjo0=z0z%f2i2i1ec+4apqupea2sad4e7)u6i+a9je^l#('
 ALLOWED_HOSTS = ['www.caltutors.org', 'www.cupertutors.org', '0.0.0.0']
 DEBUG = False
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # SECURE_SSL_REDIRECT = True # [1]
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
