@@ -28,8 +28,8 @@ SECRET_KEY = '+%*_zjo0=z0z%f2i2i1ec+4apqupea2sad4e7)u6i+a9je^l#('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = ['*', 'localhost', 'http://0.0.0.0:5000/', '127.0.0.1']
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 # Application definition
 
