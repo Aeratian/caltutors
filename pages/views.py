@@ -17,7 +17,8 @@ import base64, datetime, random, string, time
 
 team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'steven', 'michelle', 'aaron_lopes', 'anirudh_balasubramaniam',
-				  'aditya_garg', 'amithab_arumugam', 'sriman_manyam']
+				  'aditya_garg', 'amithab_arumugam', 'sriman_manyam', 'kevin_tan',
+				  'michael_wu']
 
 team_member_names = {'neil': 'Neil Palleti',
 					 'michael': 'Michael Wan',
@@ -31,7 +32,9 @@ team_member_names = {'neil': 'Neil Palleti',
 					 'anirudh_balasubramaniam': 'Anirudh Balasubramaniam',
 					 'aditya_garg': 'Aditya Garg',
 					 'amithab_arumugam': 'Amithab Arumugam',
-					 'sriman_manyam': 'Sriman Manyam'
+					 'sriman_manyam': 'Sriman Manyam',
+					 'kevin_tan': 'Kevin Tan',
+					 'michael_wu': 'Michael Wu',
 					 }
 
 team_member_title = {'neil': 'Founder & President',
@@ -46,7 +49,9 @@ team_member_title = {'neil': 'Founder & President',
 					 'anirudh_balasubramaniam': 'Math Tutor',
 					 'aditya_garg': 'Math & CS Tutor',
 					 'amithab_arumugam': 'Math Tutor',
-					 'sriman_manyam': 'Math & Chem Tutor'
+					 'sriman_manyam': 'Math & Chem Tutor',
+					 'kevin_tan': 'Private Tutor',
+					 'michael_wu': 'Private Tutor'
 					 }
 
 team_member_description = {'neil': 'Neil is an avid programmer who focuses on a variety of algorithms mainly in Java. He is an officer of ' + 
@@ -106,7 +111,12 @@ team_member_description = {'neil': 'Neil is an avid programmer who focuses on a 
 						   						'hoping to take his knowledge of these subjects wherever he goes.',
 
 						   	'sriman_manyam': 'Sriman is a mathematics and chemistry enthusiast. He has participated in AMC 8 and countless math ' +
-						   					 'olympiad contests. His interest in mathematics led to him winning a few of these contests.'
+						   					 'olympiad contests. His interest in mathematics led to him winning a few of these contests.',
+
+						   	'kevin_tan': '[Coming soon!]',
+
+						   	'michael_wu': '[Coming soon!]',
+
 						   }
 
 def index_view(request):
