@@ -69,10 +69,12 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'CalTutors.urls'
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_ROOT, 'include_templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -186,9 +188,6 @@ conn = psycopg2.connect(
     host=url.hostname,
     port=url.port
 )
-
-
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

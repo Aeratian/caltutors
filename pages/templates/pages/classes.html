@@ -71,63 +71,7 @@
 	</head>
 
 	<body id="page-top" class="index">
-		<!-- Navigation -->
-		<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top" style = "background-color: #222222 !important">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-					</button>
-					<a class="navbar-brand page-scroll" href="#page-top" style = "color: #FFFFFF !important">Classes</a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="hidden">
-							<a href="#page-top"></a>
-						</li>
-						<li><a class = "page-scroll" href="/">Home</a></li>
-						<li><a class = "page-scroll" href="/team/">Team</a></li>
-						<li><a class = "page-scroll" href="/classes/">Classes</a></li>
-						<li><a class = "page-scroll" href="/photo/">Photo Gallery</a></li>
-						<li><a class = "page-scroll" href="/contact/">Contact</a></li>
-						{% ifequal login "0" %}
-							<li>
-								<a class = "page-scroll" href="/student/"><div class='border'>Sign in</div></a>
-							</li>
-						{% else %}
-							<li>
-								<a class="page-scroll dropdown-toggle" id = "toggle" style = "cursor: pointer"> <!-- btn btn-primary -->
-									<div class = 'border'>
-										<i class="fa fa-user fa-lg" aria-hidden="true"></i>
-									</div>
-								</a>
-								<div class="dropdown">
-									<ul class="noselect dropdown-menu" id = "usermenu" style = "display: none">
-										<li><a href="/student/">Student Portal</a></li>
-										<li><a href="/student/account">Account Details</a></li>
-										<!-- <br> -->
-										<li style = "margin: 10px 5px 2px 5px">
-											<form id = "logout_element" action="{% url 'student:logout' %}" method="POST" style="display: inline;">
-												{% csrf_token %}
-												<div class = 'border' style = "display: block; margin: 0px 5px -15px 5px">
-													<a href = "#" onclick = "document.getElementById('logout_element').submit();">Logout</a>
-												</div>
-											</form>
-										</li>
-									</ul>
-								</div>
-							</li>
-						{% endifequal %}
-					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
-
+		{% include "menubar.html" with include_template_title="Classes" %}
 		<!-- Header -->
 		<header>
 			<div class="container">
@@ -209,11 +153,7 @@
 			</div>
 		</section>
 		<hr>
-		<footer container class="siteFooter">
-			<div class = "noselect container">
-				<p>Copyright &copy; 2017 by CalTutors <span style = "float: right"><a href = "mailto:contact@cupertutors.org"><i class="fa fa-envelope"></i></a></span></p>
-			</div>
-		</footer>
+		{% include "footer.html" %}
 
 		<!-- jQuery -->
 		{% load static %}		
