@@ -1,0 +1,154 @@
+Internal Server Error: /student/class/
+Traceback (most recent call last):
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/michaelwan/Desktop/Projects/Heroku/Django/CalTutors/student/views.py", line 689, in class_view
+    return render(request, 'student/course.html', data)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 208, in render
+    return self._render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/defaulttags.py", line 315, in render
+    return nodelist.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/defaulttags.py", line 508, in render
+    six.iteritems(self.extra_context)}
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/defaulttags.py", line 507, in <dictcomp>
+    values = {key: val.resolve(context) for key, val in
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 739, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/Users/michaelwan/Desktop/Projects/Heroku/Django/CalTutors/student/templatetags/student_extras.py", line 28, in key
+    return d[key_name]
+TypeError: string indices must be integers
+Internal Server Error: /student/class/
+Traceback (most recent call last):
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/michaelwan/Desktop/Projects/Heroku/Django/CalTutors/student/views.py", line 689, in class_view
+    return render(request, 'student/course.html', data)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse some characters: |{questions||key:l|key:i|key:'prompt'|safe
+Internal Server Error: /student/class/
+Traceback (most recent call last):
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/michaelwan/Desktop/Projects/Heroku/Django/CalTutors/student/views.py", line 689, in class_view
+    return render(request, 'student/course.html', data)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Unclosed tag on line 189: 'for'. Looking for one of: empty, endfor.
+Internal Server Error: /student/class/
+Traceback (most recent call last):
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/michaelwan/Desktop/Projects/Heroku/Django/CalTutors/student/views.py", line 689, in class_view
+    return render(request, 'student/course.html', data)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 208, in render
+    return self._render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/templatetags/static.py", line 104, in render
+    url = self.url(context)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/templatetags/static.py", line 101, in url
+    return self.handle_simple(path)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/templatetags/static.py", line 114, in handle_simple
+    return staticfiles_storage.url(path)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/contrib/staticfiles/storage.py", line 132, in url
+    hashed_name = self.stored_name(clean_name)
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/contrib/staticfiles/storage.py", line 292, in stored_name
+    cache_name = self.clean_name(self.hashed_name(name))
+  File "/Users/michaelwan/miniconda2/lib/python2.7/site-packages/django/contrib/staticfiles/storage.py", line 95, in hashed_name
+    (clean_name, self))
+ValueError: The file 'jsMath/jsMath.js' could not be found with <whitenoise.storage.CompressedManifestStaticFilesStorage object at 0x103e76c10>.

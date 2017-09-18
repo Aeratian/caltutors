@@ -63,7 +63,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'djangosecure.middleware.SecurityMiddleware',
+    # 'djangosecure.middleware.SecurityMiddleware',
     # 'student.gate.sessionmiddleware.GatedContent',
 ]
 

@@ -33,6 +33,8 @@
 		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
 
 		<style>
 			{% ifnotequal 'Grader' submit_type %}
@@ -56,13 +58,17 @@
 			}
 			.noselect {
 				-webkit-user-select: none;  /* Chrome all / Safari all */
-				-moz-user-select: none;     /* Firefox all */
-				-ms-user-select: none;      /* IE 10+ */
-				user-select: none;          /* Likely future */      
+				-moz-user-select: none;	 /* Firefox all */
+				-ms-user-select: none;	  /* IE 10+ */
+				user-select: none;		  /* Likely future */	  
 			}
 			.dropdown-menu li a:hover,
 			.dropdown-menu li a:focus {
 				color: #111111 !important;
+			}
+			span .katex {
+				/*word-wrap: break-word;*/
+				color: #4684ED !important;
 			}
 		</style>
 	</head>
@@ -73,235 +79,76 @@
 
 		<section id = "main" style = "padding-bottom: 15vh !important">
 			<div class = "noselect container">
-				<div row>
-					<div class = "col-sm-6">
+				<div class = "row">
+					<div class = "col-sm-9">
 						Logged in as <b><i>{{ username }}</i></b><br>
 						<a href = "/student/">Home</a>
 						<h2>{{ formatted_class_name }}</h2>
-						{% ifnotequal '-' message %}
-						{{message}}
-						{% endifnotequal %}
-						{% ifequal 'MultipleChoice' submit_type %}
-						<ul>
-							{% for t in topics %}
-								{% load static %}
-								{% with t|replaceSpaceWithUnderScore|trim|lower as tt %}
-								<li>
-									<b>{{ t }}</b> {% if lock|key:tt == "True" %}-<span style = "color: #FF1919"> Locked</span>{% endif %}
-									{% ifequal "True" scores|key:tt|key:'displayScores' %}
-										<br>Score(s):<br>
-									{% endifequal %}
-									{% with scores|key:tt|length|add:"-1" as l %}
-									{% for i in l|get_range %}
-										{% ifnotequal '' scores|key:tt|key:i %}
-											{% if i == 0 %}Easy:{% endif %}
-											{% if i == 1 %}Medium:{% endif %}
-											{% if i == 2 %}Hard:{% endif %}
-											{{scores|key:tt|key:i}}
-											{% if i == 0 %}
-												{% with class_name|add:"_easy_"|add:tt as ss %}
-												{% with num_tries|key:ss as try_val %}
-												[{{try_val}} {% if try_val == 1 %}try{% else %}tries{% endif %}]
-												{% endwith %}{% endwith %}
-											{% endif %}
-											{% if i == 1 %}
-												{% with class_name|add:"_medium_"|add:tt as ss %}
-												{% with num_tries|key:ss as try_val %}
-												[{{try_val}} {% if try_val == 1 %}try{% else %}tries{% endif %}]
-												{% endwith %}{% endwith %}
-											{% endif %}
-											{% if i == 2 %}
-												{% with class_name|add:"_hard_"|add:tt as ss %}
-												{% with num_tries|key:ss as try_val %}
-												[{{try_val}} {% if try_val == 1 %}try{% else %}tries{% endif %}]
-												{% endwith %}{% endwith %}
-											{% endif %}
-											{% if i != l|add:"-1" %}
-												{% with i|add:"1" as j %}
-													{% if '' != scores|key:tt|key:j %},{% endif %}
-												{% endwith %}
-											{% endif %}
-										{% endifnotequal %}
-									{% endfor %}
-									{% endwith %}
-									<br>
-									<a id = "submit_{{t|replaceSpaceWithUnderScore|trim|lower}}" href = "#">[Submit Answers]</a><br>
-									<a href = "{% static "curriculum/"|add:class_name|add:"/"|add:t|replaceSpaceWithUnderScore|trim|lower|add:".pdf" %}" download = "{{t|replaceSpaceWithUnderScore|trim|lower|add:".pdf"}}">[Download Problems]</a>
-									<form id = "{{t|replaceSpaceWithUnderScore|trim|lower}}" action="{% url 'student:lock_topic' %}" method="POST" style="display: inline;">
-										{% csrf_token %}
-										<input type="hidden" name="topic_id" value="{{class_name}}_{{t|replaceSpaceWithUnderScore|trim|lower}}">
-										<a href = "{% static "curriculum/"|add:class_name|add:"/solutions/"|add:t|replaceSpaceWithUnderScore|trim|lower|add:".pdf" %}" download = "{{t|replaceSpaceWithUnderScore|trim|lower|add:"_solutions.pdf"}}" onclick="return (notify() && document.getElementById('{{t|replaceSpaceWithUnderScore|trim|lower}}').submit());">
-									</form>
-									[Download Solutions]
-									</a>
-								</li>
-								<br>
-								{% endwith %}
-							{% endfor %}
-						</ul>
-						{% endifequal %}
-						{% ifequal 'Grader' submit_type %}
-						<ul>
-							{% for t in topics %}
-								{% load static %}
-								{% with t|replaceSpaceWithUnderScore|trim|lower as tt %}
-								<li>
-									<b>{{ t }}</b> {% if lock|key:tt == "True" %}-<span style = "color: #FF1919"> Locked</span>{% endif %}
-									{% ifequal "True" scores|key:tt|key:'displayScores' %}
-										<br>Score(s):<br>
-									{% endifequal %}
-									{% with scores|key:tt|length|add:"-1" as l %}
-									{% for i in l|get_range %}
-										{% ifnotequal '' scores|key:tt|key:i %}
-											{% if i == 0 %}Easy:{% endif %}
-											{% if i == 1 %}Medium:{% endif %}
-											{% if i == 2 %}Hard:{% endif %}
-											{{scores|key:tt|key:i}}
-											{% if i == 0 %}
-												{% with class_name|add:"_easy_"|add:tt as ss %}
-												{% with num_tries|key:ss as try_val %}
-												[{{try_val}} {% if try_val == 1 %}try{% else %}tries{% endif %}]
-												{% endwith %}{% endwith %}
-											{% endif %}
-											{% if i == 1 %}
-												{% with class_name|add:"_medium_"|add:tt as ss %}
-												{% with num_tries|key:ss as try_val %}
-												[{{try_val}} {% if try_val == 1 %}try{% else %}tries{% endif %}]
-												{% endwith %}{% endwith %}
-											{% endif %}
-											{% if i == 2 %}
-												{% with class_name|add:"_hard_"|add:tt as ss %}
-												{% with num_tries|key:ss as try_val %}
-												[{{try_val}} {% if try_val == 1 %}try{% else %}tries{% endif %}]
-												{% endwith %}{% endwith %}
-											{% endif %}
-											{% if i != l|add:"-1" %}
-												{% with i|add:"1" as j %}
-													{% if '' != scores|key:tt|key:j %},{% endif %}
-												{% endwith %}
-											{% endif %}
-										{% endifnotequal %}
-									{% endfor %}
-									{% endwith %}
-									<br>
-									<a href = "{% static "curriculum/"|add:class_name|add:"/"|add:t|replaceSpaceWithUnderScore|trim|lower|add:".pdf" %}" download = "{{t|replaceSpaceWithUnderScore|trim|lower|add:".pdf"}}">[Download Problems]</a>
-									</a>
-								</li>
-								<br>
-								{% endwith %}
-							{% endfor %}
-						</ul>
-						{% endifequal %}
 					</div>
-					{% ifequal 'MultipleChoice' submit_type %}
-					<div class = "col-sm-6">
-						<div class = "problems_container" style = "display: none">
-							{% for tmp in topics %}
-							<fieldset id = "easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}" style = "display: none">
-								<form action="{% url 'student:submit_answer' %}" method="post">
-									{% csrf_token %}
-									<legend><b>{{ tmp }} - Easy</b></legend>
-									{% for i in num_easy|key:tmp %}
-										{% with class_name|add:"_easy_"|add:tmp|replaceSpaceWithUnderScore|trim|lower as s %}
-										{% with saved_answers|key:s as val %}
-										{% with correct_answers|key:s as ans %}
-										{% with i|add:"-1" as j %}
-										{% if val|charAt:j != "-" and val|charAt:j != ans|charAt:j %}<span style="color:red">{% endif %}{{ i }}.{% if val|charAt:j != "-" and val|charAt:j != ans|charAt:j %}</span>{% endif %}
-										<input type="hidden" name="problem_id" value="{{class_name}}_easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}">
-										<input type = "radio" name = "{{class_name}}_easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "-" style="display:none" {% if val|charAt:j == "-" %}checked{% endif %}>
-										<input type = "radio" name = "{{class_name}}_easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "A" {% if val|charAt:j == "A" %}checked{% endif %}>&nbsp;A&nbsp;
-										<input type = "radio" name = "{{class_name}}_easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "B" {% if val|charAt:j == "B" %}checked{% endif %}>&nbsp;B&nbsp;
-										<input type = "radio" name = "{{class_name}}_easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "C" {% if val|charAt:j == "C" %}checked{% endif %}>&nbsp;C&nbsp;
-										<input type = "radio" name = "{{class_name}}_easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "D" {% if val|charAt:j == "D" %}checked{% endif %}>&nbsp;D&nbsp;
-										<input type = "radio" name = "{{class_name}}_easy_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "E" {% if val|charAt:j == "E" %}checked{% endif %}>&nbsp;E<br><br>
-										{% endwith %}{% endwith %}{% endwith %}{% endwith %}
-									{% endfor %}
-									<input type = "submit" value = "Submit"><br>
-								</form>
-							</fieldset>
-							<fieldset id = "medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}" style = "display: none">
-								<form action="{% url 'student:submit_answer' %}" method="post">
-									{% csrf_token %}
-									<legend><b>{{ tmp }} - Medium</b></legend>
-									{% for i in num_medium|key:tmp %}
-										{% with class_name|add:"_medium_"|add:tmp|replaceSpaceWithUnderScore|trim|lower as s %}
-										{% with saved_answers|key:s as val %}
-										{% with correct_answers|key:s as ans %}
-										{% with i|add:"-1" as j %}
-										{% if val|charAt:j != "-" and val|charAt:j != ans|charAt:j %}<span style="color:red">{% endif %}{{ i }}.{% if val|charAt:j != "-" and val|charAt:j != ans|charAt:j %}</span>{% endif %}
-										<input type="hidden" name="problem_id" value="{{class_name}}_medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}">
-										<input type = "radio" name = "{{class_name}}_medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "-" style="display:none" {% if val|charAt:j == "-" %}checked{% endif %}>
-										<input type = "radio" name = "{{class_name}}_medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "A" {% if val|charAt:j == "A" %}checked{% endif %}>&nbsp;A&nbsp;
-										<input type = "radio" name = "{{class_name}}_medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "B" {% if val|charAt:j == "B" %}checked{% endif %}>&nbsp;B&nbsp;
-										<input type = "radio" name = "{{class_name}}_medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "C" {% if val|charAt:j == "C" %}checked{% endif %}>&nbsp;C&nbsp;
-										<input type = "radio" name = "{{class_name}}_medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "D" {% if val|charAt:j == "D" %}checked{% endif %}>&nbsp;D&nbsp;
-										<input type = "radio" name = "{{class_name}}_medium_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "E" {% if val|charAt:j == "E" %}checked{% endif %}>&nbsp;E<br><br>
-										{% endwith %}{% endwith %}{% endwith %}{% endwith %}
-									{% endfor %}
-									<input type = "submit" value = "Submit"><br>
-								</form>
-							</fieldset>
-							<fieldset id = "hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}" style = "display: none">
-								<form action="{% url 'student:submit_answer' %}" method="post">
-									{% csrf_token %}
-									<legend><b>{{ tmp }} - Hard</b></legend>
-									{% for i in num_hard|key:tmp %}
-										{% with class_name|add:"_hard_"|add:tmp|replaceSpaceWithUnderScore|trim|lower as s %}
-										{% with saved_answers|key:s as val %}
-										{% with correct_answers|key:s as ans %}
-										{% with i|add:"-1" as j %}
-										{% if val|charAt:j != "-" and val|charAt:j != ans|charAt:j %}<span style="color:red">{% endif %}{{ i }}.{% if val|charAt:j != "-" and val|charAt:j != ans|charAt:j %}</span>{% endif %}
-										<input type="hidden" name="problem_id" value="{{class_name}}_hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}">
-										<input type = "radio" name = "{{class_name}}_hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "-" style="display:none" {% if val|charAt:j == "-" %}checked{% endif %}>
-										<input type = "radio" name = "{{class_name}}_hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "A" {% if val|charAt:j == "A" %}checked{% endif %}>&nbsp;A&nbsp;
-										<input type = "radio" name = "{{class_name}}_hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "B" {% if val|charAt:j == "B" %}checked{% endif %}>&nbsp;B&nbsp;
-										<input type = "radio" name = "{{class_name}}_hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "C" {% if val|charAt:j == "C" %}checked{% endif %}>&nbsp;C&nbsp;
-										<input type = "radio" name = "{{class_name}}_hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "D" {% if val|charAt:j == "D" %}checked{% endif %}>&nbsp;D&nbsp;
-										<input type = "radio" name = "{{class_name}}_hard_{{tmp|replaceSpaceWithUnderScore|trim|lower}}_{{i}}" value = "E" {% if val|charAt:j == "E" %}checked{% endif %}>&nbsp;E<br><br>
-										{% endwith %}{% endwith %}{% endwith %}{% endwith %}
-									{% endfor %}
-									<input type = "submit" value = "Submit"><br>
-								</form>
-							</fieldset>
-							{% endfor %}
-						</div>
+					<div class = "col-sm-3">
 					</div>
-					{% endifequal %}
-					{% ifequal 'Grader' submit_type %}
-					<div class = "col-sm-6">
-						<div class = "problems_container">
-							<form enctype="multipart/form-data" method="POST" action="{% url 'student:submit_answer' %}">
-								{% csrf_token %}
-								<fieldset>
-									<label for="problem">Problem:</label>
-									<select name="problem_id" class="formatted problem_list">
-										{% for j in topics %}
-											{% for i in problem_list|key:class_name|key:j %}
-												<div>
-													<option id = '{{i}}' value='{{i}}'>{{i}} [{{j}}]</option>
-												</div>
-											{% endfor %}
-										{% endfor %}
-									</select>
-									<label for="language">Language:</label>
-									<select name="language">
-										<option value='C'>C</option>
-										<option value='C++'>C++</option>
-										<option value='C++11'>C++11</option>
-										<option value='Java'>Java</option>
-										<option value='Pascal'>Pascal</option>
-										<option value='Python_2.7.6'>Python 2.7.6</option>
-										<option value='Python_3.4.0'>Python 3.4.0</option>
-									</select>
-									<label for="sourcefile">Source File:</label>
-									<input name="sourcefile" size="10" type="file" class="required"/>
-									<input type="submit" value="Submit Solution"/>
-								</fieldset>
-							</form>
-						</div>
-					</div>
-					{% endifequal %}
 				</div>
+			</div>
+			<br><br>
+			<div class = "row" style = "display: block">
+				<div class = "col-sm-4"></div>
+				<div class = "col-sm-4" style = "padding: 15px 15px 15px 15px; border: solid; border-width: 1px; border-color: #4684ED; border-radius: 5px">
+				<div id = "element"></div>
+					<span class="katex">
+						<span class="katex-mathml">
+							<math><semantics><mrow><mtext>
+								<mi mathvariant="normal">A</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mtext> </mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">a</mi><mtext> </mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mtext> </mtext></mtext><mn>4</mn><mn>2</mn><mtext><mtext> </mtext><mi mathvariant="normal">y</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">s</mi><mtext> </mtext><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">.</mi><mtext> </mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mtext> </mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mtext> </mtext></mtext><mn>5</mn><mtext><mtext> </mtext><mi mathvariant="normal">y</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">s</mi><mtext> </mtext><mi mathvariant="normal">y</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mtext> </mtext><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mtext> </mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">,</mi><mtext> </mtext><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mtext> </mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">a</mi><mtext> </mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mtext> </mtext><mi mathvariant="normal">h</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">f</mi><mtext> </mtext><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi><mtext> </mtext><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">d</mi><mtext> </mtext><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi><mtext> </mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mtext> </mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">.</mi><mtext> </mtext><mi mathvariant="normal">H</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi><mtext> </mtext><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">d</mi><mtext> </mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mtext> </mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">?</mi></mtext></mrow><annotation encoding="application/x-tex">\text{Aunt Anna is }42\text{ years old. Caitlin is }5\text{ years younger than Brianna, and Brianna is half as old as Aunt Anna. How old is Caitlin?}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord mathrm">A</span><span class="mord mathrm">u</span><span class="mord mathrm">n</span><span class="mord mathrm">t</span><span class="mord mspace"> </span><span class="mord mathrm">A</span><span class="mord mathrm">n</span><span class="mord mathrm">n</span><span class="mord mathrm">a</span><span class="mord mspace"> </span><span class="mord mathrm">i</span><span class="mord mathrm">s</span><span class="mord mspace"> </span></span><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="text mord textstyle uncramped"><span class="mord mspace"> </span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">e</span><span class="mord mathrm">a</span><span class="mord mathrm">r</span><span class="mord mathrm">s</span><span class="mord mspace"> </span><span class="mord mathrm">o</span><span class="mord mathrm">l</span><span class="mord mathrm">d</span><span class="mord mathrm">.</span><span class="mord mspace"> </span><span class="mord mathrm">C</span><span class="mord mathrm">a</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mord mathrm">l</span><span class="mord mathrm">i</span><span class="mord mathrm">n</span><span class="mord mspace"> </span><span class="mord mathrm">i</span><span class="mord mathrm">s</span><span class="mord mspace"> </span></span><span class="mord mathrm">5</span><span class="text mord textstyle uncramped"><span class="mord mspace"> </span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">e</span><span class="mord mathrm">a</span><span class="mord mathrm">r</span><span class="mord mathrm">s</span><span class="mord mspace"> </span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">o</span><span class="mord mathrm">u</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">g</span><span class="mord mathrm">e</span><span class="mord mathrm">r</span><span class="mord mspace"> </span><span class="mord mathrm">t</span><span class="mord mathrm">h</span><span class="mord mathrm">a</span><span class="mord mathrm">n</span><span class="mord mspace"> </span><span class="mord mathrm">B</span><span class="mord mathrm">r</span><span class="mord mathrm">i</span><span class="mord mathrm">a</span><span class="mord mathrm">n</span><span class="mord mathrm">n</span><span class="mord mathrm">a</span><span class="mord mathrm">,</span><span class="mord mspace"> </span><span class="mord mathrm">a</span><span class="mord mathrm">n</span><span class="mord mathrm">d</span><span class="mord mspace"> </span><span class="mord mathrm">B</span><span class="mord mathrm">r</span><span class="mord mathrm">i</span><span class="mord mathrm">a</span><span class="mord mathrm">n</span><span class="mord mathrm">n</span><span class="mord mathrm">a</span><span class="mord mspace"> </span><span class="mord mathrm">i</span><span class="mord mathrm">s</span><span class="mord mspace"> </span><span class="mord mathrm">h</span><span class="mord mathrm">a</span><span class="mord mathrm">l</span><span class="mord mathrm" style="margin-right:0.07778em;">f</span><span class="mord mspace"> </span><span class="mord mathrm">a</span><span class="mord mathrm">s</span><span class="mord mspace"> </span><span class="mord mathrm">o</span><span class="mord mathrm">l</span><span class="mord mathrm">d</span><span class="mord mspace"> </span><span class="mord mathrm">a</span><span class="mord mathrm">s</span><span class="mord mspace"> </span><span class="mord mathrm">A</span><span class="mord mathrm">u</span><span class="mord mathrm">n</span><span class="mord mathrm">t</span><span class="mord mspace"> </span><span class="mord mathrm">A</span><span class="mord mathrm">n</span><span class="mord mathrm">n</span><span class="mord mathrm">a</span><span class="mord mathrm">.</span><span class="mord mspace"> </span><span class="mord mathrm">H</span><span class="mord mathrm">o</span><span class="mord mathrm" style="margin-right:0.01389em;">w</span><span class="mord mspace"> </span><span class="mord mathrm">o</span><span class="mord mathrm">l</span><span class="mord mathrm">d</span><span class="mord mspace"> </span><span class="mord mathrm">i</span><span class="mord mathrm">s</span><span class="mord mspace"> </span><span class="mord mathrm">C</span><span class="mord mathrm">a</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mord mathrm">l</span><span class="mord mathrm">i</span><span class="mord mathrm">n</span><span class="mord mathrm">?</span></span></span></span></span>
+					<div id = "element"></div>
+					<div id = "stats">
+					</div>
+					<div id = "choose_topic">
+						Choose a topic to practice:<br>
+						{% for i in topics|length|get_range %}
+							{% with topics|index:i as t %}
+								{% with concise_topics|key:t as t_name %}
+									<a href="#" id = "set_topic_{{t_name}}">{{t_name}}</a>
+								{% endwith %}
+								{% if i != topics|length|add:"-1" %}
+									&nbsp;&nbsp;/&nbsp;&nbsp;
+								{% endif %}
+								<!-- <a href="#" id = "set_topic_Counting & Probability">Counting & Probability</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+								<a href="#" id = "set_topic_Geometry">Geometry</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+								<a href="#" id = "set_topic_Number Theory">Number Theory</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+								<a href="#" id = "set_topic_Problem Solving">Problem Solving</a> -->
+							{% endwith %}
+						{% endfor %}
+					</div>
+					<div id = "sort_problems" style = "display: none">
+						<br>
+						Problems:<br>
+						<a href="#difficulty">Sort by difficulty</a>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#random">Randomize</a>
+					</div>
+					<div id = "reg" style = "display: none">
+						<span style = "padding: 0px 1px 0px 3px; border: solid; border-width: 1px; border-color: #3869bd;
+						background-color: #3869bd; border-radius: 5px">
+							<a style = "color: #FFFFFF" href = "#" id = "cur_topic">Algebra</a>
+						</span>
+						<span style = "float: right; color: #3869bd" id = "settings">
+							<a href = "#" id = "settings"><i class="fa fa-bars" aria-hidden="true" id = "settings"></i></a>
+						</span>
+						<br><br>
+						<div id="problem_prompt"></div>
+						<div id="problem_choices"></div>
+						<br><br>
+						<select name = "answer" id = "answer">
+						  <option value="A">A</option>
+						  <option value="B">B</option>
+						  <option value="C">C</option>
+						  <option value="D">D</option>
+						  <option value="E">E</option>
+						</select>
+						<br><br>
+						<input type="submit" value = "Give up" id = "giveup" onclick="send_answer(0)">
+						<span style = "float: right"><input type="submit" value = "Submit" id = "submit" onclick="send_answer(1)"></span>
+					</div>
+				</div>
+				<div class = "col-sm-4"></div>
 			</div>
 		</section>
 		<hr>
@@ -333,22 +180,87 @@
 	<!-- select2 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 	<script>
-		function formatState (state) {
-			var $state = $(
-				'<span style = "float:left">' + state.id + '</span>' + 
-				'<span style = "float:right"><b>' + state.text.substring(state.text.indexOf('[')) + '</b></span>' + 
-				'<div style = "clear:both"></div>'
-			);
-			return $state;
-		};
+		problem_dict = {};
+		cur_topic_value = "Number Theory";
+		cur_index = "1";
+		{% for l in topics %}
+			topic_dict = {};
+			{% if questions|key:l != None %}
+				{% for i in questions|key:l %}
+					topic_dict["{{i}}"] = 
+					{"prompt": "{{questions|key:l|key:i|key:'prompt'|safe}}",
+					 "choices": "{{questions|key:l|key:i|key:'choices'|safe}}",
+					 "img": "{{questions|key:l|key:i|key:'img'|safe}}",
+					 "soln": "{{questions|key:l|key:i|key:'soln'|safe}}",
+					 "difficulty": "{{questions|key:l|key:i|key:'difficulty'|safe}}"}
+						
+				{% endfor %}
+			{% endif %}
+			problem_dict["{{l}}"] = topic_dict
+		{% endfor %}
+		{% for l in topics %}
+			{% if questions|key:l != None %}
+				{% for i in questions|key:l %}
+					problem_dict["{{l}}"]["{{i}}"]["prompt"] = problem_dict["{{l}}"]["{{i}}"]["prompt"];
+					problem_dict["{{l}}"]["{{i}}"]["choices"] = problem_dict["{{l}}"]["{{i}}"]["choices"];
+					problem_dict["{{l}}"]["{{i}}"]["img"] = problem_dict["{{l}}"]["{{i}}"]["img"];
+					problem_dict["{{l}}"]["{{i}}"]["soln"] = problem_dict["{{l}}"]["{{i}}"]["soln"];
+					problem_dict["{{l}}"]["{{i}}"]["difficulty"] = problem_dict["{{l}}"]["{{i}}"]["difficulty"];
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+		console.log(problem_dict);
+		katex.render(problem_dict["Number Theory"]["1"]["prompt"], problem_prompt);
+		katex.render(problem_dict["Number Theory"]["1"]["choices"], problem_choices);
+		// document.getElementById("problem_prompt").innerHTML = JSON.stringify(problem_dict["Number Theory"]["1"]["prompt"]).substring(1).slice(0, -1);
+		// document.getElementById("problem_choices").innerHTML = JSON.stringify(problem_dict["Number Theory"]["1"]["choices"]).substring(1).slice(0, -1);
 	</script>
 	<script>
-		$(".problem_list").select2({
-			// tags: true,
-		})
-		$(".formatted").select2({
-			templateResult: formatState
-		})
+		function send_answer(value) {
+			//implement randomize
+			cur_index = (parseInt(cur_index) + 1).toString(); //watch out for overflow
+			if (cur_index >= Object.keys(problem_dict[cur_topic_value]).length) {
+				cur_index = "1";
+			}
+			// document.getElementById("problem_prompt").innerHTML = JSON.stringify(problem_dict[cur_topic_value][cur_index]["prompt"]).substring(1).slice(0, -1);
+			// document.getElementById("problem_choices").innerHTML = JSON.stringify(problem_dict[cur_topic_value][cur_index]["choices"]).substring(1).slice(0, -1);
+			katex.render(problem_dict["Number Theory"][cur_index]["prompt"], problem_prompt);
+			katex.render(problem_dict["Number Theory"][cur_index]["choices"], problem_choices);
+			// console.log(document.getElementById("problem_prompt").innerHTML);
+			// console.log(document.getElementById("problem_choices").innerHTML);
+			console.log(cur_index);
+		}
+	</script>
+	<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script>
+		$(document).ready(function() {
+			$("a").click(function(event) {
+				val = event.target.id;
+				if (val.includes("set_topic")) { //setting one of the math topics
+					topic = val.substring("set_topic_".length);
+					document.getElementById("cur_topic").innerHTML = topic;
+					cur_topic_value = topic;
+					$('#stats').css('display', 'none');
+					$('#choose_topic').css('display', 'none');
+					$('#reg').css('display', 'block');
+					$('#sort_problems').css('display', 'none');
+				}
+				if (val === "settings") {
+					$('#stats').css('display', 'none');
+					$('#reg').css('display', 'none');
+					$('#choose_topic').css('display', 'none');
+					$('#sort_problems').css('display', 'block');
+				}
+				if (val === "cur_topic") {
+					$('#stats').css('display', 'block');
+					$('#choose_topic').css('display', 'block');
+					$('#reg').css('display', 'none');
+					$('#sort_problems').css('display', 'none');
+				}
+				// alert(val);
+			});
+		});
 	</script>
 	<script>
 		$('body').click(function(){
@@ -367,27 +279,6 @@
 				}
 			});
 		});
-	</script>
-	<script>
-		{% ifequal 'MultipleChoice' submit_type %}
-		$('a').click(function() {
-			if ($(this).attr('id').includes('submit')) {
-				topic_name = $(this).attr('id').substring($(this).attr('id').indexOf('_')+1)
-				for (i = 0; i < topics_array.length; i++) {
-					if (topics_array[i] != topic_name) {
-						$('#easy_' + topics_array[i]).css('display', 'none')
-						$('#medium_' + topics_array[i]).css('display', 'none')
-						$('#hard_' + topics_array[i]).css('display', 'none')
-						console.log(topics_array[i]);
-					}
-				}
-				$('.problems_container').css('display', $('#easy_' + topic_name).css('display') === "none" ? 'block' : 'none')
-				$('#easy_' + topic_name).css('display', $('#easy_' + topic_name).css('display') === "none" ? 'block' : 'none')
-				$('#medium_' + topic_name).css('display', $('#medium_' + topic_name).css('display') === "none" ? 'block' : 'none')
-				$('#hard_' + topic_name).css('display', $('#hard_' + topic_name).css('display') === "none" ? 'block' : 'none')
-			}
-		})
-		{% endifequal %}
 	</script>
 	<script>
 		var topics_array = [];

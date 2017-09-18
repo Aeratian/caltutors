@@ -15,7 +15,7 @@ from django.core.mail import EmailMultiAlternatives
 
 from django import forms
 
-import base64, datetime, random, string, time, commands
+import base64, datetime, random, string, time, commands, json
 import subprocess
 from threading import Timer
 import resource
@@ -27,6 +27,14 @@ topics = {'amc_8': ['Algebra', 'Counting and Probability', 'Geometry', 'Number T
 		  'amc_10': [],
 		  'usaco_bronze': ['Brute Force', 'Strings', 'Sorting', 'Searching']
 		  }
+
+concise_topics = {
+	'Algebra': 'Algebra',
+	'Counting and Probability': 'Counting and Probability',
+	'Geometry': 'Geometry',
+	'Number Theory': 'Number Theory',
+	'Problem Solving Strategies - Important Concepts - Word Problems - Logic': 'Problem Solving'	 
+}
 
 display_name = {'': '',
 				'AMC 8 @ Calabazas Library every Friday from 4 - 5:30 PM': 'AMC 8',
@@ -368,7 +376,7 @@ def create_view(request):
 																	 request.POST['email'],
 																	 request.POST['school']),
 		'noreply-caltutors@caltutors.org',
-		['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com'],
+		['michaelruihaowan@gmail.com', 'rajsrp314@gmail.com'],
 		fail_silently=False,
 	)
 	send_mail(
@@ -641,6 +649,12 @@ def class_view(request):
 					data['correct_answers'][s3] = problem_ans[s3]
 					data['lock'][topics[a][b].replace(' ', '_').lower().strip()] = request.user.student.get_lock(a, b)
 
+
+		data["questions"] = {}
+		data["questions"] = json.loads(open("questions/questions.json", "r").read())
+		data["concise_topics"] = {}
+		data["concise_topics"] = concise_topics
+
 		for a in range(0, data['topics'].__len__()):
 			data['scores'][data['topics'][a].replace(' ', '_').lower().strip()] = {}
 		for a in range(0, data['topics'].__len__()):
@@ -727,7 +741,7 @@ def registerTutor_view(request):
 		subject = "New CalTutors Tutor",
 		body = plain_s,
 		from_email = "noreply-caltutors@caltutors.org",
-		to = ['michaelruihaowan@gmail.com', 'neiljedimaster@gmail.com'],
+		to = ['michaelruihaowan@gmail.com', 'rajsrp314@gmail.com'],
 	)
 	mail.attach_alternative(html_s, "text/html")
 

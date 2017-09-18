@@ -1,0 +1,179 @@
+{
+	"Number Theory": {
+		"1": {
+			"prompt": "\\\\text{Find the number of two-digit positive integers whose digits total } 7 \\\\text{.}",
+			"img": "",
+			"choices": "\\\\bold{(A)} \\\\ 6\\\\qquad \\\\bold{(B)} \\\\ 7 \\\\qquad \\\\bold{(C)} \\\\ 8 \\\\qquad \\\\bold{(D)} \\\\ 9\\\\qquad \\\\bold{(E)} \\\\ 10",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"2": {
+			"prompt": "\\\\text{Aunt Anna is }42\\\\text{ years old. Caitlin is }5\\\\text{ years younger than Brianna, and Brianna is half as old as Aunt Anna. How old is Caitlin?}",
+			"img": "",
+			"choices": "\\\\bold{(A)} \\\\ 15\\\\qquad \\\\bold{(B)} \\\\ 16\\\\qquad \\\\bold{(C)} \\\\ 17 \\\\qquad \\\\bold{(D)} \\\\ 21\\\\qquad \\\\bold{(E)} \\\\ 37",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"3": {
+			"prompt": "Which of these numbers is less than its reciprocal?",
+			"img": "",
+			"choices": "$ \\bold{(A)} \\ -2\\qquad \\bold{(B)} \\ -1\\qquad \\bold{(C)} \\ 0 \\qquad \\bold{(D)} \\ 1\\qquad \\bold{(E)} \\ 2$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"4": {
+			"prompt": "How many whole numbers lie in the interval between $\\frac{5}{3}$ and $2\\pi$?",
+			"img": "",
+			"choices": "$ \\bold{(A)} \\ 2\\qquad \\bold{(B)} \\ 3\\qquad \\bold{(C)} \\ 4 \\qquad \\bold{(D)} \\ 5\\qquad \\bold{(E)} \\ $ Infinitely many",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"5": {
+			"prompt": "Which of the following numbers has the smallest prime factor?",
+			"img": "",
+			"choices": "$ \\bold{(A)} \\ 55\\qquad \\bold{(B)} \\ 57\\qquad \\bold{(C)} \\ 58 \\qquad \\bold{(D)} \\ 59\\qquad \\bold{(E)} \\ 61$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"6": {
+			"prompt": "What is the smallest possible average of four distinct positive even integers?",
+			"img": "",
+			"choices": "$ \\bold{(A)} \\ 3\\qquad \\bold{(B)} \\ 4\\qquad \\bold{(C)} \\ 5 \\qquad \\bold{(D)} \\ 6\\qquad \\bold{(E)} \\ 7$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"7": {
+			"prompt": "The year $200$ is a palindrome (a number that reads the same from left to right as it does from right to left). What is the product of the digits of the next year after $2002$ that is a palindrome?",
+			"img": "",
+			"choices": "$ \\bold{(A)} \\ 0\\qquad \\bold{(B)} \\ 4\\qquad \\bold{(C)} \\ 9 \\qquad \\bold{(D)} \\ 16\\qquad \\bold{(E)} \\ 25$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"8": {
+			"prompt": "I'm thinking of two whole numbers. Their product is $24$ and their sum is $11$. What is the larger number?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 3\\qquad \\bold{(B)}\\ 4\\qquad \\bold{(C)}\\ 6 \\qquad \\bold{(D)}\\ 8\\qquad \\bold{(E)}\\ 12$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"9": {
+			"prompt": "The digits 1, 2, 3, 4 and 9 are each used once to form the smallest possible even five-digit number. The digit in the tens place is",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 1\\qquad \\bold{(B)}\\ 2\\qquad \\bold{(C)}\\ 3 \\qquad \\bold{(D)}\\ 4\\qquad \\bold{(E)}\\ 9$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"10": {
+			"prompt": "$(6?3) + 4 - (2 - 1) = 5.$ To make this statement true, the question mark between the 6 and the 3 should be replaced by",
+			"img": "",
+			"choices": "$\\text{(A)}\\ \\div \\qquad \\text{(B)}\\ \\times \\qquad \\text{(C)}\\ + \\qquad \\text{(D)}\\ - \\qquad \\text{(E)}\\ \\text{None of these}$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"11": {
+			"prompt": "Which triplet of numbers has a sum NOT equal to $1$?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ (1/ 6, 1/ 3, 1/ 2)\\qquad \\bold{(B)}\\ (2, -2, 1) \\qquad \\bold{(C)}\\ (0.1, 0.3, 0.6)\\qquad \\bold{(D)}\\ (1.1, -2.1, 1.0)\\qquad \\bold{(E)}\\ (-3/ 2, -5/ 2, 5)$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"12": {
+			"prompt": "The ratio of the number of games won to the number of games lost (no ties) by the Middle School Middies is $\frac{11}{4}$. To the nearest whole percent, what percent of its games did the team lose?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 24\\qquad \\bold{(B)}\\ 27\\qquad \\bold{(C)}\\ 36 \\qquad \\bold{(D)}\\ 45\\qquad \\bold{(E)}\\ 73$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"13": {
+			"prompt": "Bicycle license plates in Flatville each contain three letters. The first is chosen from the set $ {C,H,L,P,R} $, the second from $ {A,I,O} $, and the third from ${D,M,N,T}$. When Flatville needed more license plates, they added two new letters. The new letters may both be added to one set or one letter may be added to one set and one to another set. What is the largest possible number of ADDITIONAL license plates that can be made by adding two letters?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 24\\qquad \\bold{(B)}\\ 30\\qquad \\bold{(C)}\\ 36 \\qquad \\bold{(D)}\\ 40\\qquad \\bold{(E)}\\ 60$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"14": {
+			"prompt": "The number $64$ has the property that it is divisible by its units digit. How many whole numbers between $10$ and $50$ have this property?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 15\\qquad \\bold{(B)}\\ 16\\qquad \\bold{(C)}\\ 17 \\qquad \\bold{(D)}\\ 18\\qquad \\bold{(E)}\\ 20$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"15": {
+			"prompt": "What is the units digit of $19^{19} + 99^{99}$?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 0 \\qquad\\bold{(B)}\\ 1\\qquad \\bold{(C)}\\ 2\\qquad \\bold{(D)}\\ 8\\qquad \\bold{(E)}\\ 9$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"16": {
+			"prompt": "The operation $\\otimes$ is defined for all nonzero numbers by $a\\otimes b = \\frac{a^2}{b}.$ Determine $[(1\\otimes 2) \\otimes 3] - [1\\otimes(2\\otimes 3)]$ .",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ -\\frac{2}{3}\\qquad \\bold{(B)}\\ -\\frac{1}{4}\\qquad \\bold{(C)}\\ 0 \\qquad \\bold{(D)}\\ \\frac{1}{4} \\qquad \\bold{(E)}\\ \\frac{2}{3}$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"17": {
+			"prompt": "You have nine coins: a collection of pennies, nickels, dimes, and quarters having a total value of $\textdollar 1.02$, with at least one coin of each type. How many dimes must you have?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 1\\qquad \\bold{(B)}\\ 2\\qquad \\bold{(C)}\\ 3 \\qquad \\bold{(D)}\\ 4\\qquad \\bold{(E)}\\ 5$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"18": {
+			"prompt": "Each of the letters $W$, $X$, $Y$, $Z$ and represents a different integer in the set ${1,2 3, 4}$ but not necessarily in that order. If $\\frac{W}{X} - \\frac{Y}{Z} = 1$, then the sum of $W$ and $Y$ is",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 3\\qquad \\bold{(B)}\\ 4\\qquad \\bold{(C)}\\ 5 \\qquad \\bold{(D)}\\ 6\\qquad \\bold{(E)}\\ 7$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"19": {
+			"prompt": "A whole number larger than $2$ leaves a remainder of $2$ when divided by each of the numbers $3$, $4$, $5$,  and $6$. The smallest such number lies between which two numbers?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 40 ,49\\qquad \\bold{(B)}\\ 60 ,79\\qquad \\bold{(C)}\\ 100 ,129 \\qquad \\bold{(D)}\\ 210 ,249\\qquad \\bold{(E)}\\ 320 ,369$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"19": {
+			"prompt": "A whole number larger than $2$ leaves a remainder of $2$ when divided by each of the numbers $3$, $4$, $5$,  and $6$. The smallest such number lies between which two numbers?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 40 ,49\\qquad \\bold{(B)}\\ 60 ,79\\qquad \\bold{(C)}\\ 100 ,129 \\qquad \\bold{(D)}\\ 210 ,249\\qquad \\bold{(E)}\\ 320 ,369$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"20": {
+			"prompt": "Terri produces a sequence of positive integers by following three rules. She starts with a positive integer, then applies the appropriate rule to the result, and continues in this fashion.<br>Rule 1: If the integer is less than 10, multiply it by 9.<br>Rule 2: If the integer is even and greater than 9, divide it by 2.<br>Rule 3: If the integer is odd and greater than 9, subtract 5 from it.<br>A sample sequence: $23, 18, 9, 81, 76..$<br>Find the $98^{th}$ term of the sequence that begins $98, 49,...$",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 6\\qquad \\bold{(B)}\\ 11\\qquad \\bold{(C)}\\ 2 \\qquad \\bold{(D)}\\ 27\\qquad \\bold{(E)}\\ 54$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"21": {
+			"prompt": "When $1999^{2000}$ is divided by $5$, the remainder is",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 4\\qquad \\bold{(B)}\\ 3\\qquad \\bold{(C)}\\ 2 \\qquad \\bold{(D)}\\ 1\\qquad \\bold{(E)}\\ 0$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"22": {
+			"prompt": "On a twenty-question test, each correct answer is worth 5 points, each unanswered question is worth 1 point and each incorrect answer is worth 0 points. Which of the following scores is NOT possible?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 90\\qquad \\bold{(B)}\\ 91\\qquad \\bold{(C)}\\ 92 \\qquad \\bold{(D)}\\ 95\\qquad \\bold{(E)}\\ 97$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"23": {
+			"prompt": "There are 24 four-digit whole numbers that use each of the four digits 2, 4, 5 and 7 exactly once. Only one of these four-digit numbers is a multiple of another one. Which of the following is it?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 5724\\qquad \\bold{(B)}\\ 7245\\qquad \\bold{(C)}\\ 7254 \\qquad \\bold{(D)}\\ 7425\\qquad \\bold{(E)}\\ 7542$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		},
+		"24": {
+			"prompt": "Three generous friends, each with some cash, redistribute their money as follows: Ami gives enough money to Jan and Toy to double the amount that each has. Jan then gives enough to Ami and Toy to double their amounts. Finally, Toy gives Ami and Jan enough to double their amounts. If Toy has $36$ when they begin and $36$ when they end, what is the total amount, in dollars,  that all three friends have?",
+			"img": "",
+			"choices": "$ \\bold{(A)}\\ 108 \\qquad \\bold{(B)}\\ 180\\qquad \\bold{(C)}\\ 216 \\qquad \\bold{(D)}\\ 252\\qquad \\bold{(E)}\\ 288$",
+			"soln": "No Solution (Yet)",
+			"difficulty": 0
+		}
+	}
+}

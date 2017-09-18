@@ -29,6 +29,10 @@ def key(d, key_name):
 key = register.filter('key', key)
 
 @register.filter
+def index(List, i):
+    return List[int(i)]
+
+@register.filter
 def get_range(value):
 	return range(value)
 
