@@ -37,7 +37,7 @@ team_member_names = {'neil': 'Neil Palleti',
 					 'michael_wu': 'Michael Wu',
 					 }
 
-team_member_title = {'neil': 'Math & CS Tutor',
+team_member_title = {'neil': 'Founder',
 					 'michael': 'Founder & President',
 					 'victor': 'Founder',
 					 'andrew': 'Math Tutor',
