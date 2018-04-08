@@ -28,7 +28,7 @@ SECRET_KEY = '+%*_zjo0=z0z%f2i2i1ec+4apqupea2sad4e7)u6i+a9je^l#('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = ['www.caltutors.org', 'www.cupertutors.org', '0.0.0.0']
-DEBUG = False
+DEBUG = True
 
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
