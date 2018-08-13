@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 # from student.models import Student
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
@@ -21,7 +21,8 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'steven', 'michelle', 'aaron_lopes', 'anirudh_balasubramaniam',
 				  'aditya_garg', 'amithab_arumugam', 'sriman_manyam', 'kevin_tan',
 				  'michael_wu', 'william_zhang', 'tom_zhang', 'tae_kyu',
-				  'saumya_tawakley', 'parth_asawa', 'maya_abiram', 'brandon_guo']
+				  'saumya_tawakley', 'parth_asawa', 'maya_abiram', 'brandon_guo', 'suhas_prasad', 'aditya_ramabadran', 'andy_tang',
+				  'richard_luo', 'rushil_saha', 'sarah_feng']
 
 team_member_names = {
 	'neil': 'Neil Palleti',
@@ -45,16 +46,22 @@ team_member_names = {
 	'saumya_tawakley': 'Saumya Tawakley',
 	'parth_asawa': 'Parth Asawa',
 	'maya_abiram': 'Maya Abiram',
-	'brandon_guo': 'Brandon Guo'
+	'brandon_guo': 'Brandon Guo',
+	'suhas_prasad': 'Suhas Prasad',
+	'aditya_ramabadran': 'Aditya Ramabadran',
+	'andy_tang': 'Andy Tang',
+	'richard_luo': 'Richard Luo',
+	'rushil_saha': 'Rushil Saha',
+	'sarah_feng': 'Sarah Feng'
 }
 
 team_member_title = {
 	'neil': 'Founder',
-	'michael': 'Founder & President',
+	'michael': 'Founder',
 	'victor': 'Founder',
 	'andrew': 'Math Tutor',
-	'raj': 'Vice President',
-	'aaron_lopes': 'Director of Marketing',
+	'raj': 'President',
+	'aaron_lopes': 'Math & CS Tutor',
 	'bryan': 'Math & CS Tutor',
 	'steven': 'Chem Tutor',
 	'michelle': 'Math & CS Tutor',
@@ -65,12 +72,18 @@ team_member_title = {
 	'kevin_tan': 'Private Tutor',
 	'michael_wu': 'Private Tutor',
 	'william_zhang': 'Math Tutor',
-	'tom_zhang': 'Math & CS Tutor',
+	'tom_zhang': 'Director of Technology',
 	'tae_kyu_kim': 'Math & CS Tutor',
 	'saumya_tawakley': 'Math & CS Tutor',
-	'parth_asawa': 'Math Tutor',
+	'parth_asawa': 'Vice President',
 	'maya_abiram': 'Math & CS Tutor',
-	'brandon_guo': 'Math Tutor',
+	'brandon_guo': 'Director of Operations',
+	'suhas_prasad': 'Tutor',
+	'aditya_ramabadran': 'Tutor',
+	'andy_tang': 'Tutor',
+	'richard_luo': 'Tutor',
+	'rushil_saha': 'Tutor',
+	'sarah_feng': 'Director of Marketing'
 }
 
 team_member_description = {
@@ -95,7 +108,13 @@ team_member_description = {
 	'saumya_tawakley': 'Saumya has a strong passion for science and has participated in many science olympiad competitions. She enjoys computer science and has also become a writer in her school’s science and technology magazine. Her hobbies include hanging out with friends and volunteering at various events around the city.',
 	'parth_asawa': 'Parth is an avid mathlete who is a freshman at Monta Vista. In particular, he enjoys working on geometry problems and has qualified for the American Invitational Mathematics Examination as well as scoring a perfect score on the AMC 8. During his free time, he enjoys playing the piano and working on physics problems.',
 	'maya_abiram': 'Maya is passionate about mathematics and computer science. She is a past AIME Qualifier and has participated in numerous math competitions. One of her goals is to conduct mathematics based research. While she in deeply interested in STEM, she also enjoys Model United Nations, playing tennis, watching Netflix, and loves music.',
-	'brandon_guo': 'Brandon enjoys both learning and teaching math. He has qualified for late rounds in both the Berkeley and MATHCOUNTS competition and has experience with competitions like the AIME. During his free time, he likes to play soccer and study physics.'
+	'brandon_guo': 'Brandon enjoys both learning and teaching math. He has qualified for late rounds in both the Berkeley and MATHCOUNTS competition and has experience with competitions like the AIME. During his free time, he likes to play soccer and study physics.',
+	'suhas_prasad': 'Suhas holds a strong passion for math: both competition and research. He has qualified for the AIME and has participated in many science fairs. During his free time, he enjoys playing soccer and watching movies.',
+	'aditya_ramabadran': 'Aditya enjoys competing in math and programming competitions. He has participated in the USACO, AMC, and other math contests such as the Berkeley Math Tournament. In his free time, he enjoys playing multiplayer games, watching shows on Netflix, and having fun with his friends.',
+	'andy_tang': 'Andy is an eager student of mathematics and computer science. He has won several awards in mathematics including qualification for the USA Junior Mathematical Olympiad. He is also a USACO platinum participant. In his free time, he likes to watch TV shows and swim.',
+	'richard_luo': 'Richard is a passionate computer programmer and musician. He has participated in various coding competitions such as USACO and HPI. In his spare time, he enjoys playing basketball and playing piano.',
+	'rushil_saha': 'Rushil enjoys learning mathematics and participating in math competitions such as the AIME. He also has been involved in several mathematical research projects. In his spare time, he enjoys playing soccer, biking, and watching movies.',
+	'sarah_feng': 'Sarah strongly enjoys learning new programming languages and creating her own personal projects. She has a strong interest in algorithms and game development. She is also passionate about long distance running and visual arts.'
 }
 
 def index_view(request):
@@ -105,24 +124,24 @@ def index_view(request):
 	# type = request.GET.get('id', 'default')
 	# if type == "1":
 	# 	data['message'] = "Your password has been updated! Please sign in again"
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['login'] = "1"
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'pages/index.html', data)
 
 def team_view(request):
 	data = {}
 	data['login'] = "0"
 	data['message'] = "-" #default value
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['login'] = "1"
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'pages/team.html', data)
 
 def team_member_view(request):
@@ -131,12 +150,12 @@ def team_member_view(request):
 	data['message'] = "-" #default value
 	type = request.GET.get('name', 'default')
 	if type in team_member_id:
-		if request.user.is_authenticated():
+		if request.user.is_authenticated:
 			try:
 				request.user.student
 				data['login'] = "1"
 			except ObjectDoesNotExist:
-				print "*** Error: Student DNE"
+				print("*** Error: Student DNE")
 		data['name'] = team_member_names[type]
 		data['picture'] = type
 		data['title'] = team_member_title[type]
@@ -149,48 +168,48 @@ def classes_view(request):
 	data = {}
 	data['login'] = "0"
 	data['message'] = "-" #default value
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['login'] = "1"
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'pages/classes.html', data)
 
 def tutors_view(request):
 	data = {}
 	data['login'] = "0"
 	data['message'] = "-" #default value
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['login'] = "1"
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'pages/tutors.html', data)
 
 def photo_view(request):
 	data = {}
 	data['login'] = "0"
 	data['message'] = "-" #default value
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['login'] = "1"
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'pages/photo.html', data)
 
 def contact_view(request):
 	data = {}
 	data['login'] = "0"
 	data['message'] = "-" #default value
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['login'] = "1"
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'pages/contact.html', data)
 
 def contact_submit_view(request):

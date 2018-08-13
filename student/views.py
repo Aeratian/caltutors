@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from student.models import Student
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
@@ -15,7 +15,7 @@ from django.core.mail import EmailMultiAlternatives
 
 from django import forms
 
-import base64, datetime, random, string, time, commands, json
+import base64, datetime, random, string, time, subprocess, json
 import subprocess
 from threading import Timer
 import resource
@@ -180,8 +180,8 @@ def handle_uploaded_file(f):
 			destination.write(chunk)
 
 def timed_command(cmd, time_lim, memory_lim): #check how much memory is used as well!!
-	# commands.getoutput('ulimit -v 256000k') #256 mb
-	commands.getoutput('ulimit -v %s' % str(memory_lim))
+	# subprocess.getoutput('ulimit -v 256000k') #256 mb
+	subprocess.getoutput('ulimit -v %s' % str(memory_lim))
 	proc = subprocess.Popen(cmd, shell=True)
 	timer = Timer(time_lim, proc.kill)
 	timer.start()
@@ -190,7 +190,7 @@ def timed_command(cmd, time_lim, memory_lim): #check how much memory is used as 
 	if timer.is_alive():
 		timer.cancel()
 		return str(proc.returncode)
-	commands.getoutput('ulimit -v unlimited')
+	subprocess.getoutput('ulimit -v unlimited')
 	return str('***ERROR: TLE')
 
 def run_code(file_name, path_to_file, language, number_times, ans_for_each_trial, time_limit, memory_lim):
@@ -205,24 +205,24 @@ def run_code(file_name, path_to_file, language, number_times, ans_for_each_trial
 			compileline = 'g++ -o ' + path_to_file[:path_to_file.rfind('.')] + ' ' + path_to_file
 		elif language == 'Java':
 			compileline = 'javac ' + path_to_file #not in right place
-		returned = commands.getoutput(compileline)
+		returned = subprocess.getoutput(compileline)
 		if returned != "":
-			print returned
-			commands.getoutput('rm ' + path_to_file)
+			print(returned)
+			subprocess.getoutput('rm ' + path_to_file)
 			return -300 #COMPILATION ERROR CODE
 		else:
 			if language == 'C' or language == 'C++' or language == 'C++11':
 				output = timed_command('./' + path_to_file[:path_to_file.rfind('.')], time_limit, memory_lim)
-				commands.getoutput('rm ' + path_to_file[:path_to_file.rfind('.')])
+				subprocess.getoutput('rm ' + path_to_file[:path_to_file.rfind('.')])
 			elif language == 'Java':
 				output = timed_command('java ' + file_name, memory_lim)
-				commands.getoutput('rm ' + path_to_file[:path_to_file.rfind('.')] + '.class')
+				subprocess.getoutput('rm ' + path_to_file[:path_to_file.rfind('.')] + '.class')
 	elif "Python" in language:
 		if language == 'Python_2.7.6':
 			output = timed_command('python2.7 ' + path_to_file, time_limit, memory_lim)
 		elif language == 'Python_3.4.0':
 			output = timed_command('python3 ' + path_to_file, time_limit, memory_lim)
-	commands.getoutput('rm ' + path_to_file)
+	subprocess.getoutput('rm ' + path_to_file)
 	if "***" in output: #error
 		if "TLE" in output:
 			return -100 #TLE CODE
@@ -245,14 +245,14 @@ def index_view(request):
 		data['message'] =  "User created successfully! You can now login."
 	elif type == "201":
 		data['message'] =  "Your password has been updated! Please sign in again."
-	elif request.user.is_authenticated():
+	elif request.user.is_authenticated:
 		try:
 			request.user.student
 			data['status'] = "Signed in as " + request.user.username
 			data['not_login'] = False
 			return redirect('student:user')
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'student/index.html', data)
 
 def account_view(request):
@@ -260,7 +260,7 @@ def account_view(request):
 	data['not_login'] = True
 	data['message'] = "-" #default value
 	type = request.GET.get('id', 'default')
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['not_login'] = False
@@ -280,12 +280,12 @@ def account_view(request):
 				data['message'] = "Your changes have been updated!"
 			return render(request, 'student/account.html', data)
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'student/index.html', data)
 
 def update_pw_view(request):
 	data = {}
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['status'] = "Signed in as " + request.user.username
@@ -307,12 +307,12 @@ def update_pw_view(request):
 			else:
 				return redirect(reverse('student:account') + '?id=' + '100')
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'student/index.html', data)
 
 def update_personal_view(request):
 	data = {}
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			request.user.student
 			data['status'] = "Signed in as " + request.user.username
@@ -332,7 +332,7 @@ def update_personal_view(request):
 			request.user.student.save()
 			return redirect(reverse('student:account') + '?id=' + '102')
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	return render(request, 'student/index.html', data)
 
 
@@ -392,7 +392,7 @@ def create_view(request):
 def user_view(request):
 	data = {}
 	data['not_login'] = True
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		try:
 			data['status'] = "Signed in as " + request.user.username
 			data['not_login'] = False
@@ -408,15 +408,15 @@ def user_view(request):
 			
 			return render(request, 'student/user.html', data)
 		except ObjectDoesNotExist:
-			print "*** Error: Student DNE"
+			print("*** Error: Student DNE")
 	else:
-		print "Not logged in"
+		print("Not logged in")
 		data['status'] = "You are not signed in."
 	return redirect('student:index')
 
 def registerClass_view(request):
 	data = {}
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		classes = []
 		classes = request.POST.getlist('classes')
 
@@ -492,7 +492,7 @@ def login_view(request):
 				data['classes'] = user.student.getClasses()
 				return redirect('student:user')
 			except ObjectDoesNotExist:
-				print "*** Error: Student DNE"	
+				print("*** Error: Student DNE")	
 		else:
 			data["info"] = "Error: Account is disabled."
 			a = "100"
@@ -552,12 +552,12 @@ def submit_answer_view(request):
 							# print "Saving " + problem_id
 							request.user.student.save()
 						else:
-							print a + ", " + str(b) + ": locked"
+							print(a + ", " + str(b) + ": locked")
 						return redirect(reverse('student:class') + '?course=' + a)
 	else: #MAKE THIS FOR USACO CLASSES EXCLUSIVELY
 		language = request.POST['language']
-		print "Language: " + language
-		print "request.FILES: " + str(request.FILES)
+		print("Language: " + language)
+		print("request.FILES: " + str(request.FILES))
 		form = UploadFileForm(request.POST, request.FILES['sourcefile'])
 		filename = request.FILES['sourcefile'].name
 		filename = filename[:filename.rfind('.')]
@@ -580,22 +580,22 @@ def submit_answer_view(request):
 		elif 'Python' in language:
 			newfilename += '.py'
 		newfilename = (filename + "_" + newfilename)
-		commands.getoutput('mv temp uploaded_files/%s' % newfilename)
+		subprocess.getoutput('mv temp uploaded_files/%s' % newfilename)
 		# mem limit of 256 mb: 256000*1000
 		ret = run_code(filename, 'uploaded_files/' + newfilename, language, 1, 'asdfads', 1, 1000) #replace 'asdfads' with name of problem (match w/ problem files) and time limit w/ actual problem time limit
 		if ret == -1:
-			print "ERROR"
+			print("ERROR")
 		return redirect(reverse('student:class') + '?course=' + 'usaco_bronze')
 
 
 def class_view(request):
 	type = request.GET.get('course', 'default')
-	print "Class view: " + str(type)
+	print("Class view: " + str(type))
 	#Course doesn't exist
 	if str(type) not in topics:
 		 return redirect('student:index')
 	data = {}
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		#Not registered for course
 		found = False
 		for a in request.user.student.getClasses():
@@ -692,7 +692,7 @@ def class_view(request):
 
 def class_schedule_view(request):
 	data = {}
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		data['username'] = request.user.username
 		data['classes'] = request.user.student.getClasses()
 		data['date'] = str(datetime.date.today())
@@ -782,11 +782,11 @@ def send_reset_link_view(request):
 	try:
 		list_ppl = Student.objects.all().filter(email=request.POST['reset_email'].strip())
 		if list_ppl.__len__() == 0:
-			print "User does not exist"
+			print("User does not exist")
 			return redirect(reverse('student:forgot_password') + '?id=' + '178')
 		name = Student.objects.all().filter(email=request.POST['reset_email'].strip())[0].firstname
 	except User.DoesNotExist:
-		print "User does not exist"
+		print("User does not exist")
 		return render(request, 'student/forgot_password_redirect.html', data)
 	href = url
 	plain_s = "<html>Hi " + name + ',\n\nWe received a request to reset the password for your account. If this was you, click <a href = "' + href + '">here</a>. (Link expires in 30 minutes)\n\n'
