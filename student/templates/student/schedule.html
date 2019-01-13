@@ -23,10 +23,10 @@
 		<!-- Theme CSS -->
 		{% load static %}
 		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
-		
+
 		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		
+
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -54,7 +54,7 @@
 				-webkit-user-select: none;  /* Chrome all / Safari all */
 				-moz-user-select: none;     /* Firefox all */
 				-ms-user-select: none;      /* IE 10+ */
-				user-select: none;          /* Likely future */      
+				user-select: none;          /* Likely future */
 			}
 			.dropdown-menu li a:hover,
 			.dropdown-menu li a:focus {
@@ -79,10 +79,10 @@
 	</body>
 	<br><br>
 	<!-- jQuery -->
-	{% load static %}		
+	{% load static %}
 	<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
 	<!-- Bootstrap Core JavaScript -->
-	{% load static %}		
+	{% load static %}
 	<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 	<!-- Plugin JavaScript -->
 	{% load static %}
@@ -90,17 +90,17 @@
 	<!-- Contact Form JavaScript -->
 	{% load static %}
 	<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
-	{% load static %}		
+	{% load static %}
 	<script src="{% static 'theme/js/contact_me.js' %}"></script>
 	<!-- Theme JavaScript -->
-	{% load static %}		
+	{% load static %}
 	<script src="{% static 'theme/js/agency.min.js' %}"></script>
 	<!-- Odometer JavaScript -->
 	{% load static %}
 	<script src="{% static 'js/odometer.js' %}"></script>
 	<!-- Waypoints -->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-	
+
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.js">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.css">
 	<link rel="stylesheet" media = "print" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.print.css">
@@ -124,7 +124,7 @@
 						$("#usermenu").show();
 					}
 					else {
-						$("#usermenu").hide();	
+						$("#usermenu").hide();
 					}
 				}
 				else if (!$(e.target).closest('#usermenu').length) {
@@ -137,43 +137,15 @@
 			$(document).ready(function() {
 				var repeatingEvents = [
 					{
-						title: 'AMC 8',
-						id: 1,
-						start: '16:00',
-						end: '17:30',
-						description: "Calabazas Library",
-						dow: [5],
-					},
-					{
 						title: 'AMC 10',
-						id: 2,
-						start: '16:30',
-						end: '18:00',
-						description: "Calabazas Library",
-						dow: [1],
-					},
-					{
-						title:"AMC 8",
-						id: 3,
-						start: '15:00', 
-						end: '16:30',
-						description: "West Valley Library",
-						dow: [6], 
-						ranges: [{
-							start: moment('2016-10-01', 'YYYY-MM-DD'),
-							end: moment('2016-11-05', 'YYYY-MM-DD'),
-						}],
-					},
-					{
-						title:"AMC 8",
-						id: 4,
-						start: '15:00', 
-						end: '16:30',
+						id: 1,
+						start: '10:30',
+						end: '12:00',
 						description: "West Valley Library",
 						dow: [6],
 					}
 				];
-				
+
 				var getEvents = function( start, end ){
 					return repeatingEvents;
 				}
@@ -188,8 +160,8 @@
 					defaultView: 'month',
 					editable: false,
 					eventRender: function(event, element, view) {
-						element.find('.fc-title').append("<br/>" + event.description); 
-						
+						element.find('.fc-title').append("<br/>" + event.description);
+
 						//no specified range = forever
 						if (event.ranges == null) {
 							return true;
@@ -206,8 +178,8 @@
 						}).length)>0;
 					},
 					events: function(start, end, timezone, callback ){
-						var events = getEvents(start,end); 
-						
+						var events = getEvents(start,end);
+
 						callback(events);
 					},
 				});
