@@ -1,4 +1,4 @@
-<!DOCTYPE html>	
+<!DOCTYPE html>
 <html lang = "en">
 	<head>
 		<meta charset="utf-8">
@@ -21,10 +21,10 @@
 		<!-- Theme CSS -->
 		{% load static %}
 		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
-		
+
 		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		
+
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -65,7 +65,7 @@
 				-webkit-user-select: none;  /* Chrome all / Safari all */
 				-moz-user-select: none;     /* Firefox all */
 				-ms-user-select: none;      /* IE 10+ */
-				user-select: none;          /* Likely future */      
+				user-select: none;          /* Likely future */
 			}
 	</style>
 	</head>
@@ -236,10 +236,10 @@
 		{% include "footer.html" %}
 
 		<!-- jQuery -->
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
 		<!-- Bootstrap Core JavaScript -->
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 		<!-- Plugin JavaScript -->
 		{% load static %}
@@ -247,10 +247,10 @@
 		<!-- Contact Form JavaScript -->
 		{% load static %}
 		<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/js/contact_me.js' %}"></script>
 		<!-- Theme JavaScript -->
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/js/agency.min.js' %}"></script>
 		<!-- Odometer JavaScript -->
 		{% load static %}
@@ -267,7 +267,7 @@
 							$("#usermenu").show();
 						}
 						else {
-							$("#usermenu").hide();	
+							$("#usermenu").hide();
 						}
 					}
 					else if (!$(e.target).closest('#usermenu').length) {
@@ -279,10 +279,10 @@
 
 		<script>
 			$('#stats').waypoint(function() {
-				setTimeout(function() { num_hours.innerHTML = "500"; }, 1000);
-				setTimeout(function() { num_students.innerHTML = "500"; }, 1000);
-				setTimeout(function() { num_classes.innerHTML = "300"; }, 1000);
-				setTimeout(function() { num_libraries.innerHTML = "5"; }, 1000);
+				setTimeout(function() { num_hours.innerHTML = "300"; }, 1000);
+				setTimeout(function() { num_students.innerHTML = "200"; }, 1000);
+				setTimeout(function() { num_classes.innerHTML = "200"; }, 1000);
+				setTimeout(function() { num_libraries.innerHTML = "3"; }, 1000);
 			},
 			{ offset: '100%' });
 		</script>
