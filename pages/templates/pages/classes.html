@@ -21,10 +21,10 @@
 		<!-- Theme CSS -->
 		{% load static %}
 		<link href="{% static 'theme/css/agency.css' %}" rel="stylesheet">
-		
+
 		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		
+
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -61,7 +61,7 @@
 				-webkit-user-select: none;  /* Chrome all / Safari all */
 				-moz-user-select: none;     /* Firefox all */
 				-ms-user-select: none;      /* IE 10+ */
-				user-select: none;          /* Likely future */      
+				user-select: none;          /* Likely future */
 			}
 			.dropdown-menu li a:hover,
 			.dropdown-menu li a:focus {
@@ -88,7 +88,6 @@
 					<div class = "col-lg-4">
 						<a href="#math">Math</a>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="#cs">CS</a>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="#chem">Chem</a>
 					</div>
 					<div class = "col-lg-4"></div>
 				</div>
@@ -137,29 +136,14 @@
 				</div>
 			</div>
 		</section>
-
-		<!-- Chem Section -->
-		<section id="chem_section" style = "padding: 0 0 6vh 0 !important">
-			<div class="noselect container" style = "align: center; text-align: center">
-				<div id = "chem">
-					<h3>Chemistry</h3>
-				</div>
-				<div class = "row">
-					<div class = "col-lg-12" style = "text-align: left">
-						<h4>Chemistry Olympiad Local Round - <i>Competitive Science</i></h4>
-						<p> Chemistry Olympiad is a worldwide competition that aims to inspire students around the world to pursue chemistry or chemistry related subjects. The Olympiad consists of two main parts: the local exam and the national exam.  The local exam consists of the introductory parts of general chemistry, while the national exam goes more in depth into general chemistry and touches on organic chemistry. This course will aim to teach students the content and tricks behind the local exam and will touch on the more in depth aspects of the national exam. No background in chemistry is required, but it will definitely help. Particularly skilled students will be taught how to excel in the national exam, and make the study camp. This course will be based off resources from the olympiad website and off materials from past international chemistry olympiad winners.<br><br>More information about the Chemistry Olympiad can be found <a href = "http://www.acs.org/content/acs/en/education/students/highschool/olympiad.html​">here</a>.</p>
-					</div>
-				</div>
-			</div>
-		</section>
 		<hr>
 		{% include "footer.html" %}
 
 		<!-- jQuery -->
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
 		<!-- Bootstrap Core JavaScript -->
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 		<!-- Plugin JavaScript -->
 		{% load static %}
@@ -167,10 +151,10 @@
 		<!-- Contact Form JavaScript -->
 		{% load static %}
 		<script src="{% static 'theme/js/jqBootstrapValidation.js' %}"></script>
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/js/contact_me.js' %}"></script>
 		<!-- Theme JavaScript -->
-		{% load static %}		
+		{% load static %}
 		<script src="{% static 'theme/js/agency.min.js' %}"></script>
 		<!-- Odometer JavaScript -->
 		{% load static %}
@@ -187,7 +171,7 @@
 							$("#usermenu").show();
 						}
 						else {
-							$("#usermenu").hide();	
+							$("#usermenu").hide();
 						}
 					}
 					else if (!$(e.target).closest('#usermenu').length) {
