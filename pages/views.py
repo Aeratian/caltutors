@@ -53,7 +53,7 @@ team_member_names = {
 	'richard_luo': 'Richard Luo',
 	'rushil_saha': 'Rushil Saha',
 	'sarah_feng': 'Sarah Feng',
-    'sid_majeti': 'Saisidharth Majeti'
+    'sid_majeti': 'Sid Majeti'
 }
 
 team_member_title = {
@@ -117,7 +117,7 @@ team_member_description = {
 	'richard_luo': 'Richard is a passionate computer programmer and musician. He has participated in various coding competitions such as USACO and HPI. In his spare time, he enjoys playing basketball and playing piano.',
 	'rushil_saha': 'Rushil enjoys learning mathematics and participating in math competitions such as the AIME. He also has been involved in several mathematical research projects. In his spare time, he enjoys playing soccer, biking, and watching movies.',
 	'sarah_feng': 'Sarah strongly enjoys learning new programming languages and creating her own personal projects. She has a strong interest in algorithms and game development. She is also passionate about long distance running and visual arts.',
-    'sid_majeti': 'Saisidharth is very interested in math and computer science and loves to share his knowledge with others. He has participated in many math competitions such as the AMC 10 and camps such as COSMOS. In his free time, he likes to play the flute and play basketball on his school team.'
+    'sid_majeti': 'Sid is very interested in math and computer science and loves to share his knowledge with others. He has participated in many math competitions such as the AMC 10 and camps such as COSMOS. In his free time, he likes to play the flute and play basketball on his school team.'
 }
 
 def index_view(request):
