@@ -22,7 +22,7 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'aditya_garg', 'amithab_arumugam', 'sriman_manyam', 'kevin_tan',
 				  'michael_wu', 'william_zhang', 'tom_zhang', 'tae_kyu_kim',
 				  'saumya_tawakley', 'parth_asawa', 'maya_abiram', 'brandon_guo', 'suhas_prasad', 'aditya_ramabadran', 'andy_tang',
-				  'richard_luo', 'rushil_saha', 'sarah_feng']
+				  'richard_luo', 'rushil_saha', 'sarah_feng', 'sid_majeti']
 
 team_member_names = {
 	'neil': 'Neil Palleti',
@@ -52,7 +52,8 @@ team_member_names = {
 	'andy_tang': 'Andy Tang',
 	'richard_luo': 'Richard Luo',
 	'rushil_saha': 'Rushil Saha',
-	'sarah_feng': 'Sarah Feng'
+	'sarah_feng': 'Sarah Feng',
+    'sid_majeti': 'Saisidharth Majeti'
 }
 
 team_member_title = {
@@ -83,7 +84,8 @@ team_member_title = {
 	'andy_tang': 'Tutor',
 	'richard_luo': 'Tutor',
 	'rushil_saha': 'Tutor',
-	'sarah_feng': 'Director of Marketing'
+	'sarah_feng': 'Director of Marketing',
+    'sid_majeti': 'Tutor'
 }
 
 team_member_description = {
@@ -114,7 +116,8 @@ team_member_description = {
 	'andy_tang': 'Andy is an eager student of mathematics and computer science. He has won several awards in mathematics including qualification for the USA Junior Mathematical Olympiad. He is also a USACO platinum participant. In his free time, he likes to watch TV shows and swim.',
 	'richard_luo': 'Richard is a passionate computer programmer and musician. He has participated in various coding competitions such as USACO and HPI. In his spare time, he enjoys playing basketball and playing piano.',
 	'rushil_saha': 'Rushil enjoys learning mathematics and participating in math competitions such as the AIME. He also has been involved in several mathematical research projects. In his spare time, he enjoys playing soccer, biking, and watching movies.',
-	'sarah_feng': 'Sarah strongly enjoys learning new programming languages and creating her own personal projects. She has a strong interest in algorithms and game development. She is also passionate about long distance running and visual arts.'
+	'sarah_feng': 'Sarah strongly enjoys learning new programming languages and creating her own personal projects. She has a strong interest in algorithms and game development. She is also passionate about long distance running and visual arts.',
+    'sid_majeti': 'Saisidharth is very interested in math and computer science and loves to share his knowledge with others. He has participated in many math competitions such as the AMC 10 and camps such as COSMOS. In his free time, he likes to play the flute and play basketball on his school team.'
 }
 
 def index_view(request):
