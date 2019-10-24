@@ -20,7 +20,7 @@ import base64, datetime, random, string, time
 team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'steven', 'michelle', 'aaron_lopes', 'anirudh_balasubramaniam',
 				  'aditya_garg', 'amithab_arumugam', 'sriman_manyam', 'kevin_tan',
-				  'michael_wu', 'william_zhang', 'tom_zhang', 'tae_kyu',
+				  'michael_wu', 'william_zhang', 'tom_zhang', 'tae_kyu_kim',
 				  'saumya_tawakley', 'parth_asawa', 'maya_abiram', 'brandon_guo', 'suhas_prasad', 'aditya_ramabadran', 'andy_tang',
 				  'richard_luo', 'rushil_saha', 'sarah_feng']
 
@@ -103,7 +103,7 @@ team_member_description = {
 	'kevin_tan': '[Coming soon!]',
 	'michael_wu': '[Coming soon!]',
 	'william_zhang': 'William is active in competitive mathematics and coding. He is fluent in Java, C++, and Python and is also in the Gold division of the online programming contest USACO. He is a three time AIME qualifier and scored a 144 on the 2017 AMC 10B. He has experience teaching as a Kennedy Middle School Mathcounts coach, and has previously represented Kennedy in the competition itself.  He enjoys watching TV shows and running in his free time.',
-	'tom_zhang': 'Tom is an avid programmer who is in the Gold division of the USACO contest. In addition to algorithmic coding, Tom participates in hackathons, most recently winning second place at Firebird Hacks. He spends the rest of his time playing baseball for his high school team, participating in school clubs like Debate, and playing video games.',
+	'tom_zhang': 'Tom is a high school student at Monta Vista interested in pursuing a career in computer science. He is especially interested in machine learning, advanced algorithms, and web/app development. Currently, he is conducting research at top universities, working on coding projects that align with his interests, and leading multiple student organizations.',
 	'tae_kyu_kim': 'Tae Kyu Kim is a freshman at Monta Vista High School. He has participated in the AMC competitions since middle school, perfecting the AMC 8 and qualifying for AIME in eighth grade. In addition, he studies C++ and is in the Gold division for USACO. In his free time, he enjoys playing rhythm games and the cello.',
 	'saumya_tawakley': 'Saumya has a strong passion for science and has participated in many science olympiad competitions. She enjoys computer science and has also become a writer in her school’s science and technology magazine. Her hobbies include hanging out with friends and volunteering at various events around the city.',
 	'parth_asawa': 'Parth is an avid mathlete who is a sophomore at Monta Vista. In particular, he enjoys working on geometry problems and has qualified for the American Invitational Mathematics Examination as well as scoring a perfect score on the AMC 8. During his free time, he enjoys playing the piano and working on physics problems.',
