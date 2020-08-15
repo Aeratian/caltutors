@@ -22,7 +22,7 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'aditya_garg', 'amithab_arumugam', 'sriman_manyam', 'kevin_tan',
 				  'michael_wu', 'william_zhang', 'tom_zhang', 'tae_kyu_kim',
 				  'saumya_tawakley', 'parth_asawa', 'maya_abiram', 'brandon_guo', 'suhas_prasad', 'aditya_ramabadran', 'andy_tang',
-				  'richard_luo', 'rushil_saha', 'sarah_feng', 'sid_majeti']
+				  'richard_luo', 'rushil_saha', 'sarah_feng', 'sid_majeti', 'abhinav_kommula', 'darren_yao', 'ansh_chaurasia', 'neil_makur']
 
 team_member_names = {
 	'neil': 'Neil Palleti',
@@ -53,7 +53,11 @@ team_member_names = {
 	'richard_luo': 'Richard Luo',
 	'rushil_saha': 'Rushil Saha',
 	'sarah_feng': 'Sarah Feng',
-    'sid_majeti': 'Sid Majeti'
+    'sid_majeti': 'Sid Majeti',
+	'abhinav_kommula': 'Abhinav Kommula',
+	'darren_yao': 'Darren Yao',
+	'ansh_chaurasia': 'Ansh Chaurasia',
+	'neil_makur': 'Neil Makur'
 }
 
 team_member_title = {
@@ -61,7 +65,7 @@ team_member_title = {
 	'michael': 'Founder',
 	'victor': 'Founder',
 	'andrew': 'Math Tutor',
-	'raj': 'President',
+	'raj': 'Founder',
 	'aaron_lopes': 'Math & CS Tutor',
 	'bryan': 'Math & CS Tutor',
 	'steven': 'Chem Tutor',
@@ -73,19 +77,23 @@ team_member_title = {
 	'kevin_tan': 'Private Tutor',
 	'michael_wu': 'Private Tutor',
 	'william_zhang': 'Math Tutor',
-	'tom_zhang': 'Director of Technology',
-	'tae_kyu_kim': 'Math & CS Tutor',
+	'tom_zhang': 'Tutor',
+	'tae_kyu_kim': 'President',
 	'saumya_tawakley': 'Math & CS Tutor',
-	'parth_asawa': 'Vice President',
+	'parth_asawa': 'Math Tutor',
 	'maya_abiram': 'Math & CS Tutor',
-	'brandon_guo': 'Director of Operations',
+	'brandon_guo': 'Tutor',
 	'suhas_prasad': 'Tutor',
-	'aditya_ramabadran': 'Tutor',
+	'aditya_ramabadran': 'Director of Operations',
 	'andy_tang': 'Tutor',
 	'richard_luo': 'Tutor',
 	'rushil_saha': 'Tutor',
 	'sarah_feng': 'Director of Marketing',
-    'sid_majeti': 'Tutor'
+    'sid_majeti': 'Tutor',
+	'abhinav_kommula': 'Vice President',
+	'darren_yao': 'Math & CS Tutor',
+	'ansh_chaurasia': 'CS Tutor',
+	'neil_makur': 'Math Tutor'
 }
 
 team_member_description = {
@@ -106,7 +114,7 @@ team_member_description = {
 	'michael_wu': '[Coming soon!]',
 	'william_zhang': 'William is active in competitive mathematics and coding. He is fluent in Java, C++, and Python and is also in the Gold division of the online programming contest USACO. He is a three time AIME qualifier and scored a 144 on the 2017 AMC 10B. He has experience teaching as a Kennedy Middle School Mathcounts coach, and has previously represented Kennedy in the competition itself.  He enjoys watching TV shows and running in his free time.',
 	'tom_zhang': 'Tom is a high school student at Monta Vista interested in pursuing a career in computer science. He is especially interested in machine learning, advanced algorithms, and web/app development. Currently, he is conducting research at top universities, working on coding projects that align with his interests, and leading multiple student organizations.',
-	'tae_kyu_kim': 'Tae Kyu Kim is a senior at Monta Vista High School. He has participated in the AMC competitions since middle school, perfecting the AMC 8 and qualifying for AIME in eighth grade. In addition, he studies C++ and is in the Gold division for USACO. In his free time, he enjoys playing rhythm games and the cello.',
+	'tae_kyu_kim': 'Tae Kyu Kim is a senior at Monta Vista High School. He has participated in the AMC competitions since middle school, perfecting the AMC 8 and qualifying for AIME in eighth grade. In addition, he studies C++ and is in the Platinum division for USACO. In his free time, he enjoys playing rhythm games and the cello.',
 	'saumya_tawakley': 'Saumya has a strong passion for science and has participated in many science olympiad competitions. She enjoys computer science and has also become a writer in her school’s science and technology magazine. Her hobbies include hanging out with friends and volunteering at various events around the city.',
 	'parth_asawa': 'Parth is an avid mathlete who is a sophomore at Monta Vista. In particular, he enjoys working on geometry problems and has qualified for the American Invitational Mathematics Examination as well as scoring a perfect score on the AMC 8. During his free time, he enjoys playing the piano and working on physics problems.',
 	'maya_abiram': 'Maya is passionate about mathematics and computer science. She is a past AIME Qualifier and has participated in numerous math competitions. One of her goals is to conduct mathematics based research. While she in deeply interested in STEM, she also enjoys Model United Nations, playing tennis, watching Netflix, and loves music.',
@@ -117,7 +125,11 @@ team_member_description = {
 	'richard_luo': 'Richard is a passionate computer programmer and musician. He has participated in various coding competitions such as USACO and HPI. In his spare time, he enjoys playing basketball and playing piano.',
 	'rushil_saha': 'Rushil enjoys learning mathematics and participating in math competitions such as the AIME. He also has been involved in several mathematical research projects. In his spare time, he enjoys playing soccer, biking, and watching movies.',
 	'sarah_feng': 'Sarah strongly enjoys learning new programming languages and creating her own personal projects. She has a strong interest in algorithms and game development. She is also passionate about long distance running and visual arts.',
-    'sid_majeti': 'Sid is very interested in math and computer science and loves to share his knowledge with others. He has participated in many math competitions such as the AMC 10 and camps such as COSMOS. In his free time, he likes to play the flute and play basketball on his school team.'
+    'sid_majeti': 'Sid is very interested in math and computer science and loves to share his knowledge with others. He has participated in many math competitions such as the AMC 10 and camps such as COSMOS. In his free time, he likes to play the flute and play basketball on his school team.',
+	'abhinav_kommula': 'Abhinav is a senior at Monta Vista High School. He enjoys participating in the AMC Competitions since his freshman year in high school, and has qualified for AIME 3 times since then and made the Distinguished Honor Roll in 10th grade. He also enjoys programming in C++ and is in the Platinum division for USACO. During his free time, Abhinav enjoys cooking with his family and arguing with his friends over whether pineapple belongs on pizza.',
+	'darren_yao': 'Darren is a rising senior at Carlmont High School. He participates in various math and programming competitions such as the AMC, AIME, and the Platinum division of USACO. In his free time, he is an avid musician and League of Legends player.',
+	'ansh_chaurasia': 'Ansh Chaurasia is a sophomore at Monta Vista High School in Cupertino. He is a gregarious code loving person with over six years of programming experience in C++ and Java. Also holding the title of USACO Gold Contestant, Ansh is more than excited to help coders at any opportunity coming. With all of the experience and knowledge, Ansh hopes to make a positive impact on the coding community.',
+	'neil_makur': 'Neil Makur currently attends Fremont Christian High School. In his free time, he likes to learn new concepts in math, such as Differential Equations and Algebraic Topology. When he is not doing math, Neil enjoys playing the trumpet and reading books.'
 }
 
 def index_view(request):
