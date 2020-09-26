@@ -89,7 +89,7 @@
 						<div class = "team-member">
 							{% with 'img/team/'|add:picture|add:".png" as pic_link %}
 								{% load static %}
-								<img src = "{% static pic_link %}" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
+								<img src = "{% static pic_link %}" height = "150" width = "150" class = "img-circle" alt="" onMouseOver="show_blurb()" onMouseOut="hide_blurb()">
 								<h4>{{ name }}</h4>
 								<p>{{ title }}</p>
 							{% endwith %}

@@ -16,5 +16,6 @@ Some notes:
 	1. To update 'Teams' page, update the following: 
 			caltutors/pages/views.py						| add new tutors' info
 			caltutors/pages/templates/pages/team.html		| each row has 12 div's. No need to worry about the href, as long as views.py was completed
-			caltutors/CalTutors/static/img/team/			| rescale tutors' photo to 150 x 150 pixels and add to folder
+															| add `height = "150" width = "150"` when sourcing image in teams.html
+			caltutors/CalTutors/static/img/team/			| crop picture to square and add to folder
 
