@@ -376,7 +376,7 @@ def create_view(request):
 																	 request.POST['email'],
 																	 request.POST['school']),
 		'noreply-caltutors@caltutors.org',
-		['michaelruihaowan@gmail.com', 'rajsrp314@gmail.com'],
+		['michaelruihaowan@gmail.com', 'rajsrp314@gmail.com', 'Taekyukim02@gmail.com'],
 		fail_silently=False,
 	)
 	send_mail(
@@ -741,7 +741,7 @@ def registerTutor_view(request):
 		subject = "New CalTutors Tutor",
 		body = plain_s,
 		from_email = "noreply-caltutors@caltutors.org",
-		to = ['michaelruihaowan@gmail.com', 'rajsrp314@gmail.com'],
+		to = ['michaelruihaowan@gmail.com', 'rajsrp314@gmail.com', 'Taekyukim02@gmail.com'],
 	)
 	mail.attach_alternative(html_s, "text/html")
 
