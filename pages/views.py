@@ -24,7 +24,7 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'saumya_tawakley', 'parth_asawa', 'maya_abiram', 'brandon_guo', 'suhas_prasad', 
 				  'aditya_ramabadran', 'andy_tang', 'richard_luo', 'rushil_saha', 'sarah_feng', 
 				  'sid_majeti', 'abhinav_kommula', 'darren_yao', 'ansh_chaurasia', 'neil_makur', 
-				  'ian_youn']
+				  'ian_youn', 'sam_srivatsan']
 
 team_member_names = {
 	'neil': 'Neil Palleti',
@@ -60,7 +60,8 @@ team_member_names = {
 	'darren_yao': 'Darren Yao',
 	'ansh_chaurasia': 'Ansh Chaurasia',
 	'neil_makur': 'Neil Makur',
-	'ian_youn': 'Ian Youn'
+	'ian_youn': 'Ian Youn',
+	'sam_srivatsan': 'Sam Srivatsan'
 }
 
 team_member_title = {
@@ -97,7 +98,8 @@ team_member_title = {
 	'darren_yao': 'Math & CS Tutor',
 	'ansh_chaurasia': 'CS Tutor',
 	'neil_makur': 'Math Tutor',
-	'ian_youn': 'Math & CS Tutor'
+	'ian_youn': 'Math & CS Tutor',
+	'sam_srivatsan': 'Math & CS Tutor'
 }
 
 team_member_description = {
@@ -134,7 +136,8 @@ team_member_description = {
 	'darren_yao': 'Darren is a rising senior at Carlmont High School. He participates in various math and programming competitions such as the AMC, AIME, and the Platinum division of USACO. In his free time, he is an avid musician and League of Legends player.',
 	'ansh_chaurasia': 'Ansh Chaurasia is a sophomore at Monta Vista High School in Cupertino. He is a gregarious code loving person with over six years of programming experience in C++ and Java. Also holding the title of USACO Gold Contestant, Ansh is more than excited to help coders at any opportunity coming. With all of the experience and knowledge, Ansh hopes to make a positive impact on the coding community.',
 	'neil_makur': 'Neil Makur currently attends Fremont Christian High School. In his free time, he likes to learn new concepts in math, such as Differential Equations and Algebraic Topology. When he is not doing math, Neil enjoys playing the trumpet and reading books.',
-	'ian_youn': 'Ian is currently a sophomore attending Monta Vista High School. In the past, he has participated in the USACO and AMC competitions numerous times and has even qualified for the AIME. In his free time, he enjoys playing video games and sports with his friends.'
+	'ian_youn': 'Ian is currently a sophomore attending Monta Vista High School. In the past, he has participated in the USACO and AMC competitions numerous times and has even qualified for the AIME. In his free time, he enjoys playing video games and sports with his friends.',
+	'sam_srivatsan': 'Sam is a sophomore at Monta Vista High School. She has participated in USACO and numerous math competitions, and sees immense possibility in machine learning. Besides the programming ones, Sam speaks five other languages! When she isn’t learning, coding or calculating, she enjoys reading and spending time with her family.'
 }
 
 def index_view(request):
