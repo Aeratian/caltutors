@@ -24,7 +24,8 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'saumya_tawakley', 'maya_abiram', 'brandon_guo', 'suhas_prasad', 
 				  'aditya_ramabadran', 'andy_tang', 'richard_luo', 'rushil_saha', 'sarah_feng', 
 				  'sid_majeti', 'abhinav_kommula', 'darren_yao', 'ansh_chaurasia', 'neil_makur', 
-				  'ian_youn', 'sam_srivatsan']
+				  'ian_youn', 'sam_srivatsan', 'john_tahk', 'frances_keuper', 'cecilia_huang',
+				  'shaunak_joshi', 'janice_lin', 'emilian_sega', 'aris_yang']
 # removed upon request: 'parth_asawa'
 
 team_member_names = {
@@ -62,7 +63,14 @@ team_member_names = {
 	'ansh_chaurasia': 'Ansh Chaurasia',
 	'neil_makur': 'Neil Makur',
 	'ian_youn': 'Ian Youn',
-	'sam_srivatsan': 'Sam Srivatsan'
+	'sam_srivatsan': 'Sam Srivatsan',
+	'john_tahk': 'John Tahk',
+	'frances_keuper': 'Frances Keuper',
+	'cecilia_huang': 'Cecilia Huang',
+	'shaunak_joshi': 'Shaunak Joshi',
+	'janice_lin': 'Janice Lin',
+	'emilian_sega': 'Emilian Sega',
+	'aris_yang': 'Aris Yang'
 }
 
 team_member_title = {
@@ -99,8 +107,15 @@ team_member_title = {
 	'darren_yao': 'Math & CS Tutor',
 	'ansh_chaurasia': 'CS Tutor',
 	'neil_makur': 'Math Tutor',
-	'ian_youn': 'Math & CS Tutor',
-	'sam_srivatsan': 'Math & CS Tutor'
+	'ian_youn': 'President',
+	'sam_srivatsan': 'Vice President',
+	'john_tahk': 'Director of Operations',
+	'frances_kueper': 'Chemistry Tutor',
+	'cecilia_huang': 'Chemistry Tutor',
+	'shaunak_joshi': 'Chemistry Tutor',
+	'janice_lin': 'Math Tutor',
+	'aris_yang': 'Math & CS Tutor',
+	'emilian_sega': 'Math Tutor'
 }
 
 team_member_description = {
@@ -137,8 +152,15 @@ team_member_description = {
 	'darren_yao': 'Darren is a rising senior at Carlmont High School. He participates in various math and programming competitions such as the AMC, AIME, and the Platinum division of USACO. In his free time, he is an avid musician and League of Legends player.',
 	'ansh_chaurasia': 'Ansh Chaurasia is a sophomore at Monta Vista High School in Cupertino. He is a gregarious code loving person with over six years of programming experience in C++ and Java. Also holding the title of USACO Gold Contestant, Ansh is more than excited to help coders at any opportunity coming. With all of the experience and knowledge, Ansh hopes to make a positive impact on the coding community.',
 	'neil_makur': 'Neil Makur currently attends Fremont Christian High School. In his free time, he likes to learn new concepts in math, such as Differential Equations and Algebraic Topology. When he is not doing math, Neil enjoys playing the trumpet and reading books.',
-	'ian_youn': 'Ian is currently a sophomore attending Monta Vista High School. In the past, he has participated in the USACO and AMC competitions numerous times and has even qualified for the AIME. In his free time, he enjoys playing video games and sports with his friends.',
-	'sam_srivatsan': 'Sam is a sophomore at Monta Vista High School. She has participated in USACO and numerous math competitions, and sees immense possibility in machine learning. Besides the programming ones, Sam speaks five other languages! When she isn’t learning, coding or calculating, she enjoys reading and spending time with her family.'
+	'ian_youn': 'Ian is currently a junior attending Monta Vista High School. In the past, he has participated in the USACO, AMC, and F=ma competitions numerous times and is a three-time AIME qualifier and a USACO Silver contestant.',
+	'sam_srivatsan': 'Sam is a junior at Monta Vista High School. She brings an energetic attitude and years of experience with USACO, AMC-AIME, and tutoring K-12 students.',
+	'john_tahk': 'Hi I’m John, and I’m excited to be able to work with you this year! I have been teaching in various subjects for a few years and have participated in the AIME and USACO primarily. Outside of school, I love to play tennis, read fantasy books, and skate.',
+	'frances_keuper': 'Frances is a junior at Cupertino High School. She is a science enthusiast, and a passionate musician. In her free time, Frances enjoys baking, playing the violin, and spending time with her family!',
+	'cecilia_huang': 'Cecilia is currently a junior at Cupertino High School with a passion for chemistry and math. She is a Public Relations officer for her school\'s STEM magazine Tino Explore, and has experience tutoring in the past. Her interests include learning as many languages possible on Duolingo, writing, listening to music, and playing video games.',
+	'shaunak_joshi': 'I am Shaunak Joshi, and I\'m currently a junior at Monta Vista High School. I love biology and geology, and my hobbies include reading, drawing, and water polo. I hope to be a marine biologist when I\'m older.',
+	'janice_lin': 'I enjoy finding new ways to teach students, creating fun activities, and planning out things! I\'ve organized a lot of stuff in the past, and prepared problems for students as well.',
+	'aris_yang': 'My name is Aris Yang and I am a sophomore at Monta Vista High School. I am very dedicated to school and strive to get straight A\'s. My favorite school subjects are math, science, and computer science. In my free time, I primarily listen to music and play golf. ',
+	'emilian_sega': 'Emilian Sega is a junior in high school with a passion for math and astrophysics. He has helped many students with math throughout his high school years, and he loves helping them break the misconception of math being the worst subject. In his free time, Emilian enjoys photography, biking with friends, and playing videogames.'
 }
 
 def index_view(request):
