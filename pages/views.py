@@ -65,7 +65,7 @@ team_member_names = {
 	'ian_youn': 'Ian Youn',
 	'sam_srivatsan': 'Sam Srivatsan',
 	'john_tahk': 'John Tahk',
-	'frances_kueper': 'Frances Keuper',
+	'frances_kueper': 'Frances Kueper',
 	'cecilia_huang': 'Cecilia Huang',
 	'shaunak_joshi': 'Shaunak Joshi',
 	'janice_lin': 'Janice Lin',
