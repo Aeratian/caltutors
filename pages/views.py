@@ -25,7 +25,7 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'aditya_ramabadran', 'andy_tang', 'richard_luo', 'rushil_saha', 'sarah_feng', 
 				  'sid_majeti', 'abhinav_kommula', 'darren_yao', 'ansh_chaurasia', 'neil_makur', 
 				  'ian_youn', 'sam_srivatsan', 'john_tahk', 'frances_kueper', 'cecilia_huang',
-				  'shaunak_joshi', 'janice_lin', 'emilian_sega', 'aris_yang']
+				  'shaunak_joshi', 'janice_lin', 'emilian_sega', 'aris_yang', 'shrinithi', 'darren_chiu']
 # removed upon request: 'parth_asawa'
 
 team_member_names = {
@@ -70,7 +70,9 @@ team_member_names = {
 	'shaunak_joshi': 'Shaunak Joshi',
 	'janice_lin': 'Janice Lin',
 	'emilian_sega': 'Emilian Sega',
-	'aris_yang': 'Aris Yang'
+	'aris_yang': 'Aris Yang',
+	'shrinithi': 'Shrinithi Sathiyaseelan',
+	'darren_chiu': 'Darren Chiu'
 }
 
 team_member_title = {
@@ -115,7 +117,9 @@ team_member_title = {
 	'shaunak_joshi': 'Chemistry Tutor',
 	'janice_lin': 'Math Tutor',
 	'aris_yang': 'Math & CS Tutor',
-	'emilian_sega': 'Math Tutor'
+	'emilian_sega': 'Math Tutor',
+	'shrinithi': 'Chemistry Head',
+	'darren_chiu': 'Biology Tutor'
 }
 
 team_member_description = {
@@ -160,7 +164,9 @@ team_member_description = {
 	'shaunak_joshi': 'I am Shaunak Joshi, and I\'m currently a junior at Monta Vista High School. I love biology and geology, and my hobbies include reading, drawing, and water polo. I hope to be a marine biologist when I\'m older.',
 	'janice_lin': 'I enjoy finding new ways to teach students, creating fun activities, and planning out things! I\'ve organized a lot of stuff in the past, and prepared problems for students as well.',
 	'aris_yang': 'My name is Aris Yang and I am a sophomore at Monta Vista High School. I am very dedicated to school and strive to get straight A\'s. My favorite school subjects are math, science, and computer science. In my free time, I primarily listen to music and play golf. ',
-	'emilian_sega': 'Emilian Sega is a junior in high school with a passion for math and astrophysics. He has helped many students with math throughout his high school years, and he loves helping them break the misconception of math being the worst subject. In his free time, Emilian enjoys photography, biking with friends, and playing videogames.'
+	'emilian_sega': 'Emilian Sega is a junior in high school with a passion for math and astrophysics. He has helped many students with math throughout his high school years, and he loves helping them break the misconception of math being the worst subject. In his free time, Emilian enjoys photography, biking with friends, and playing videogames.',
+	'shrinithi': 'Shrinithi Sathiyaseelan is currently a junior at American High School. She enjoys tutoring kids and is very passionate about science and the medical field. In her free time, she can be found reading, watching movies and TV shows, or listening to music.',
+	'darren_chiu': 'Hi!  I am Darren Chiu.  I find interest in topics regarding biology and environmental sciences. I\'m excited to work with you!'
 }
 
 def index_view(request):
