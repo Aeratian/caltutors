@@ -24,7 +24,7 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'saumya_tawakley', 'maya_abiram', 'brandon_guo', 'suhas_prasad', 
 				  'aditya_ramabadran', 'andy_tang', 'richard_luo', 'rushil_saha', 'sarah_feng', 
 				  'sid_majeti', 'abhinav_kommula', 'darren_yao', 'ansh_chaurasia', 'neil_makur', 
-				  'ian_youn', 'sam_srivatsan', 'john_tahk', 'frances_keuper', 'cecilia_huang',
+				  'ian_youn', 'sam_srivatsan', 'john_tahk', 'frances_kueper', 'cecilia_huang',
 				  'shaunak_joshi', 'janice_lin', 'emilian_sega', 'aris_yang']
 # removed upon request: 'parth_asawa'
 
@@ -65,7 +65,7 @@ team_member_names = {
 	'ian_youn': 'Ian Youn',
 	'sam_srivatsan': 'Sam Srivatsan',
 	'john_tahk': 'John Tahk',
-	'frances_keuper': 'Frances Keuper',
+	'frances_kueper': 'Frances Keuper',
 	'cecilia_huang': 'Cecilia Huang',
 	'shaunak_joshi': 'Shaunak Joshi',
 	'janice_lin': 'Janice Lin',
@@ -155,7 +155,7 @@ team_member_description = {
 	'ian_youn': 'Ian is currently a junior attending Monta Vista High School. In the past, he has participated in the USACO, AMC, and F=ma competitions numerous times and is a three-time AIME qualifier and a USACO Silver contestant.',
 	'sam_srivatsan': 'Sam is a junior at Monta Vista High School. She brings an energetic attitude and years of experience with USACO, AMC-AIME, and tutoring K-12 students.',
 	'john_tahk': 'Hi I’m John, and I’m excited to be able to work with you this year! I have been teaching in various subjects for a few years and have participated in the AIME and USACO primarily. Outside of school, I love to play tennis, read fantasy books, and skate.',
-	'frances_keuper': 'Frances is a junior at Cupertino High School. She is a science enthusiast, and a passionate musician. In her free time, Frances enjoys baking, playing the violin, and spending time with her family!',
+	'frances_kueper': 'Frances is a junior at Cupertino High School. She is a science enthusiast, and a passionate musician. In her free time, Frances enjoys baking, playing the violin, and spending time with her family!',
 	'cecilia_huang': 'Cecilia is currently a junior at Cupertino High School with a passion for chemistry and math. She is a Public Relations officer for her school\'s STEM magazine Tino Explore, and has experience tutoring in the past. Her interests include learning as many languages possible on Duolingo, writing, listening to music, and playing video games.',
 	'shaunak_joshi': 'I am Shaunak Joshi, and I\'m currently a junior at Monta Vista High School. I love biology and geology, and my hobbies include reading, drawing, and water polo. I hope to be a marine biologist when I\'m older.',
 	'janice_lin': 'I enjoy finding new ways to teach students, creating fun activities, and planning out things! I\'ve organized a lot of stuff in the past, and prepared problems for students as well.',
