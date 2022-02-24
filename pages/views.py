@@ -25,7 +25,8 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'aditya_ramabadran', 'andy_tang', 'richard_luo', 'rushil_saha', 'sarah_feng', 
 				  'sid_majeti', 'abhinav_kommula', 'darren_yao', 'ansh_chaurasia', 'neil_makur', 
 				  'ian_youn', 'sam_srivatsan', 'john_tahk', 'frances_kueper', 'cecilia_huang',
-				  'shaunak_joshi', 'janice_lin', 'emilian_sega', 'aris_yang', 'shrinithi', 'darren_chiu']
+				  'shaunak_joshi', 'janice_lin', 'emilian_sega', 'aris_yang', 'shrinithi', 'darren_chiu',
+      			  'ishan_datta', 'krish_dev']
 # removed upon request: 'parth_asawa'
 
 team_member_names = {
@@ -72,7 +73,9 @@ team_member_names = {
 	'emilian_sega': 'Emilian Sega',
 	'aris_yang': 'Aris Yang',
 	'shrinithi': 'Shrinithi Sathiyaseelan',
-	'darren_chiu': 'Darren Chiu'
+	'darren_chiu': 'Darren Chiu',
+	'ishan_datta': 'Ishan Datta',
+	'krish_dev': 'Krish Dev'
 }
 
 team_member_title = {
@@ -119,7 +122,9 @@ team_member_title = {
 	'aris_yang': 'Math & CS Tutor',
 	'emilian_sega': 'Math Tutor',
 	'shrinithi': 'Chemistry Head',
-	'darren_chiu': 'Biology Tutor'
+	'darren_chiu': 'Biology Tutor',
+	'ishan_datta': 'Chemistry Tutor',
+	'krish_dev': 'Chemistry Tutor'
 }
 
 team_member_description = {
@@ -166,7 +171,9 @@ team_member_description = {
 	'aris_yang': 'My name is Aris Yang and I am a sophomore at Monta Vista High School. I am very dedicated to school and strive to get straight A\'s. My favorite school subjects are math, science, and computer science. In my free time, I primarily listen to music and play golf. ',
 	'emilian_sega': 'Emilian Sega is a junior in high school with a passion for math and astrophysics. He has helped many students with math throughout his high school years, and he loves helping them break the misconception of math being the worst subject. In his free time, Emilian enjoys photography, biking with friends, and playing videogames.',
 	'shrinithi': 'Shrinithi Sathiyaseelan is currently a junior at American High School. She enjoys tutoring kids and is very passionate about science and the medical field. In her free time, she can be found reading, watching movies and TV shows, or listening to music.',
-	'darren_chiu': 'Hi!  I am Darren Chiu.  I find interest in topics regarding biology and environmental sciences. I\'m excited to work with you!'
+	'darren_chiu': 'Hi!  I am Darren Chiu.  I find interest in topics regarding biology and environmental sciences. I\'m excited to work with you!',
+	'ishan_datta': 'Ishan is a junior at Monta Vista with a strong math background from math courses and AMC competition. He is currently conducting an independent research project into fast food wages. When not working, he enjoys watching YouTube, playing piano, and keeping tabs on the stock market.',
+	'krish_dev': 'Krish Dev'
 }
 
 def index_view(request):
