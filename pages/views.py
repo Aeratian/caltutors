@@ -26,7 +26,7 @@ team_member_id = ['neil', 'michael', 'victor', 'andrew', 'raj', 'bryan',
 				  'sid_majeti', 'abhinav_kommula', 'darren_yao', 'ansh_chaurasia', 'neil_makur', 
 				  'ian_youn', 'sam_srivatsan', 'john_tahk', 'frances_kueper', 'cecilia_huang',
 				  'shaunak_joshi', 'janice_lin', 'emilian_sega', 'aris_yang', 'shrinithi', 'darren_chiu',
-      			  'ishan_datta', 'krish_dev', 'akanksha_varanasi']
+      			  'ishan_datta', 'krish_dev', 'akanksha_varanasi', 'rahul_punji']
 # removed upon request: 'parth_asawa'
 
 team_member_names = {
@@ -76,7 +76,8 @@ team_member_names = {
 	'darren_chiu': 'Darren Chiu',
 	'ishan_datta': 'Ishan Datta',
 	'krish_dev': 'Krish Dev',
-	'akanksha_varanasi': 'Akanksha Varanasi'
+	'akanksha_varanasi': 'Akanksha Varanasi',
+	'rahul_punji': 'Rahul Punji'
 }
 
 team_member_title = {
@@ -126,7 +127,8 @@ team_member_title = {
 	'darren_chiu': 'Biology Tutor',
 	'ishan_datta': 'Chemistry Tutor',
 	'krish_dev': 'Chemistry Tutor',
-	'akanksha_varanasi': 'Physics Tutor'
+	'akanksha_varanasi': 'Physics Tutor',
+	'rahul_punji': 'Physics Tutor'
 }
 
 team_member_description = {
@@ -176,7 +178,8 @@ team_member_description = {
 	'darren_chiu': 'Hi!  I am Darren Chiu.  I find interest in topics regarding biology and environmental sciences. I\'m excited to work with you!',
 	'ishan_datta': 'Ishan is a junior at Monta Vista with a strong math background from math courses and AMC competition. He is currently conducting an independent research project into fast food wages. When not working, he enjoys watching YouTube, playing piano, and keeping tabs on the stock market.',
 	'krish_dev': 'Krish Dev',
-	'akanksha_varanasi': 'Hi! My name is Akanksha, and I\'m a junior at Monta Vista High School. I love science, specifically physics and molecular biology. In my free time, I enjoy knitting, playing the piano, and reading.'
+	'akanksha_varanasi': 'Hi! My name is Akanksha, and I\'m a junior at Monta Vista High School. I love science, specifically physics and molecular biology. In my free time, I enjoy knitting, playing the piano, and reading.',
+	'rahul_punji': 'Rahul is currently a junior at Monta Vista High School. He has 5 years of experience coding in Python, 3 years of coding in Java, Javascript, HTML, CSS, PHP, and has a deep interest in web development and app development. He has also participated in USACO and enjoys the field of Machine Learning, particularly Deep Learning. In his free time, Rahul likes to watch anime and play sports with his friends.'
 }
 
 def index_view(request):
